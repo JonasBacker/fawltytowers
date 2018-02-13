@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -12,30 +8,30 @@ namespace Model
     public class Issue
     {
         // issuenr?
-        
-        public ServiceClass IssueServiceClass { get; set; }
+        public ServiceClass IssueClass { get; set; }
         public string IssueDesc { get; set; }
         public int RoomNr { get; set; }
         public CompletionStatus Status { get; set; }
 
-        DateTime TimeIssued { get; set; }
-        DateTime TimeCompleted { get; set; }
+        public DateTime TimeIssued { get; set; }
+        public DateTime TimeCompleted { get; set; }
         
         public Issue()
         {
 
         }
 
-        public void RegisterNewIssue(int room, ServiceClass sc, string desc)
+        public Issue RegisterNewIssue(int room, ServiceClass sc, string desc)
         {
             // sette issuenr?
             RoomNr = room;
-            IssueServiceClass = sc;
+            IssueClass = sc;
             IssueDesc = desc;
             Status = CompletionStatus.issued;
             TimeIssued = DateTime.Now;
 
             // oppdater database
+            return this;
         }
 
         public void RegisterInProgress()
@@ -52,9 +48,6 @@ namespace Model
 
             // oppdater database
         }
-
-
-
 
     }
 }
