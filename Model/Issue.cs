@@ -1,39 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Model
 {
+    public enum CompletionStatus { issued, inProgress, completed }
+    public enum ServiceClass { cleaning, service, maintenance }
+
     public class Issue
     {
-        enum CompletionStatus { issued, inProgress, completed }
-        enum IssueClass { cleaning, service, maintenance }
-
-        public IssueClass issueClass { get; set; }
+        // issuenr?
+        
+        public ServiceClass IssueServiceClass { get; set; }
         public string IssueDesc { get; set; }
         public int RoomNr { get; set; }
-        public IssueStatus status { get; set; }
+        public CompletionStatus Status { get; set; }
 
-        DateTime timeIssued;
-        // DateTime timeInProgress; // trolig unødvendig
-        DateTime timeCompleted;
-
-        CompletionStatus status;
-
+        DateTime TimeIssued { get; set; }
+        DateTime TimeCompleted { get; set; }
+        
         public Issue()
         {
-            
+
         }
 
-        public void registerNewIssue(int room, IssueClass ic, string desc)
+        public void RegisterNewIssue(int room, ServiceClass sc, string desc)
         {
-            this.RoomNr = room;
-            this.issueClass = ic;
-            this.IssueDesc = desc;
-            this.status = CompletionStatus.issued;
-            this.issued = DateTime.Now();
+            // sette issuenr?
+            RoomNr = room;
+            IssueServiceClass = sc;
+            IssueDesc = desc;
+            Status = CompletionStatus.issued;
+            TimeIssued = DateTime.Now;
+
+            // oppdater database
         }
+
+        public void RegisterInProgress()
+        {
+            Status = CompletionStatus.inProgress;
+
+            // oppdater database
+        }
+
+        public void RegisterCompleted()
+        {
+            Status = CompletionStatus.completed;
+            TimeCompleted = DateTime.Now;
+
+            // oppdater database
+        }
+
+
 
 
     }
 }
+
