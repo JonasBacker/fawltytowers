@@ -24,17 +24,18 @@ namespace StaffUtility
     /// </summary>
     public sealed partial class CleaningPage : Page
     {
+        public ObservableCollection<Issue> il;
         public CleaningPage()
         {
             this.InitializeComponent();
-            ObservableCollection<Issue> il = new ObservableCollection<Issue>();
+            il = new ObservableCollection<Issue>();
             for (int i = 1; i <= 10; i++)
             {
                 Issue iss = new Issue().RegisterNewIssue(i, ServiceClass.cleaning, "Clean the room");
                 il.Add(iss);
             }
             issue_list.DataContext = il;
-            
+
         }
 
         private void service_go_home_Click(object sender, RoutedEventArgs e)

@@ -5,11 +5,20 @@
     xmlns:local="using:StaffUtility"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="using:Model"
     mc:Ignorable="d">
 
     <Grid Name="g1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Name="cleaning_go_home" Content="Home" HorizontalAlignment="Center" Margin="642,711,662,0" VerticalAlignment="Top" Height="73" Width="196" Click="service_go_home_Click"/>
-        <TextBox Name="cleaning_header" HorizontalAlignment="Center" Margin="647,117,670,0" Text="This is the cleaning page" VerticalAlignment="Top"/>
-        <ListView Name="issue_list" HorizontalAlignment="Center" Height="450" Margin="578,206,608,0" VerticalAlignment="Top" Width="314" SelectionChanged="issue_list_SelectionChanged"/>
+        <Button Name="cleaning_go_home" Content="Home" HorizontalAlignment="Center" Margin="25,711,25,0" VerticalAlignment="Top" Height="73" Width="196" Click="service_go_home_Click"/>
+        <TextBox Name="cleaning_header" HorizontalAlignment="Center" Margin="25,117,25,0" Text="This is the cleaning page" VerticalAlignment="Top"/>
+        <ListView Name="issue_list" ItemsSource="{x:Bind il}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="396" Width="310" Margin="25,204,25,400">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local1:Issue">
+                    <TextBlock Text="{x:Bind RoomNr}"/>
+                    
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
