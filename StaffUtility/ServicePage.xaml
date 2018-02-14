@@ -8,8 +8,8 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Name="service_go_home" Content="Home" HorizontalAlignment="Left" Margin="635,433,0,0" VerticalAlignment="Top" Height="133" Width="196" Click="service_go_home_Click"/>
-        <TextBox Name="service_header" HorizontalAlignment="Left" Margin="649,191,0,0" Text="This is the service page" VerticalAlignment="Top"/>
+        <Button Name="service_go_home" Content="Home" HorizontalAlignment="Center" Margin="0,433,0,0" VerticalAlignment="Top" Height="133" Width="196" Click="service_go_home_Click"/>
+        <TextBox Name="service_header" HorizontalAlignment="Center" Margin="0,191,0,0" Text="This is the service page" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>
