@@ -7,9 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Name="cleaning_go_home" Content="Home" HorizontalAlignment="Left" Margin="635,433,0,0" VerticalAlignment="Top" Height="133" Width="196" Click="service_go_home_Click"/>
-        <TextBox Name="cleaning_header" HorizontalAlignment="Left" Margin="649,191,0,0" Text="This is the cleaning page" VerticalAlignment="Top"/>
-
+    <Grid Name="g1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button Name="cleaning_go_home" Content="Home" HorizontalAlignment="Center" Margin="642,711,662,0" VerticalAlignment="Top" Height="73" Width="196" Click="service_go_home_Click"/>
+        <TextBox Name="cleaning_header" HorizontalAlignment="Center" Margin="647,117,670,0" Text="This is the cleaning page" VerticalAlignment="Top"/>
+        <ListView Name="issue_list" HorizontalAlignment="Center" Height="450" Margin="578,206,608,0" VerticalAlignment="Top" Width="314" SelectionChanged="issue_list_SelectionChanged"/>
     </Grid>
 </Page>

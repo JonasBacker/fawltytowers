@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Model;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,11 +27,20 @@ namespace StaffUtility
         public CleaningPage()
         {
             this.InitializeComponent();
+            ObservableCollection<Issue> il = new ObservableCollection<Issue>();
+            for (int i = 1; i <= 10; i++)
+            {
+                Issue iss = new Issue().RegisterNewIssue(i, ServiceClass.cleaning, "Clean the room");
+                il.Add(iss);
+            }
+            issue_list.DataContext = il;
+            
         }
 
         private void service_go_home_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
         }
+
     }
 }
