@@ -1,0 +1,15 @@
+﻿<Page
+    x:Class="StaffUtility.ServicePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StaffUtility"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button Name="service_go_home" Content="Home" HorizontalAlignment="Left" Margin="635,433,0,0" VerticalAlignment="Top" Height="133" Width="196" Click="service_go_home_Click"/>
+        <TextBox Name="service_header" HorizontalAlignment="Left" Margin="649,191,0,0" Text="This is the service page" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>

@@ -8,6 +8,12 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+        <Button Name="go_service" Content="Service" HorizontalAlignment="Left" Margin="111,77,0,-235" VerticalAlignment="Top" Click="Button_Click_1" Height="158" Width="404" Grid.RowSpan="2"/>
+        <Button Name="go_cleaning" Content="Cleaning" HorizontalAlignment="Left" Margin="117,264,0,-431" Grid.RowSpan="2" VerticalAlignment="Top" Height="167" Width="395" Click="go_cleaning_Click"/>
+        <Button Name="go_maintenance" Content="Maintenace" HorizontalAlignment="Left" Margin="117,464,0,-637" Grid.RowSpan="2" VerticalAlignment="Top" Height="173" Width="401" Click="go_maintenance_Click"/>
     </Grid>
 </Page>
