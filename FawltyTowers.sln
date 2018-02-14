@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopApplication", "DesktopApplication\DesktopApplication.csproj", "{DB577134-9FDF-480C-B7B9-7DDC5D5F7819}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffUtility", "StaffUtility\StaffUtility.csproj", "{95F949CD-EAB5-409E-B85A-14DB988467C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +38,8 @@ Global
 		{DB577134-9FDF-480C-B7B9-7DDC5D5F7819}.Release|x86.ActiveCfg = Release|Any CPU
 		{DB577134-9FDF-480C-B7B9-7DDC5D5F7819}.Release|x86.Build.0 = Release|Any CPU
 		{95F949CD-EAB5-409E-B85A-14DB988467C5}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{95F949CD-EAB5-409E-B85A-14DB988467C5}.Debug|Any CPU.Build.0 = Debug|x86
+		{95F949CD-EAB5-409E-B85A-14DB988467C5}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{95F949CD-EAB5-409E-B85A-14DB988467C5}.Debug|ARM.ActiveCfg = Debug|ARM
 		{95F949CD-EAB5-409E-B85A-14DB988467C5}.Debug|ARM.Build.0 = Debug|ARM
 		{95F949CD-EAB5-409E-B85A-14DB988467C5}.Debug|ARM.Deploy.0 = Debug|ARM

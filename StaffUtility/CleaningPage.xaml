@@ -23,13 +23,15 @@
         <ListView Name="issue_list" ItemsSource="{x:Bind il}" Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Background="#FFECEFFF" Margin="20,0,0,20">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local1:Issue">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{x:Bind RoomNr}"/>
-                        <TextBlock Text="{x:Bind Status}"/>
-                        <TextBlock Text="{x:Bind IssueDesc}"/>
-                        <TextBlock Text="{x:Bind TimeIssued}"/>
-                        <TextBlock Text="{x:Bind TimeCompleted}"/>
+                    <Border BorderThickness="10">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind RoomNr}"/>
+                            <TextBlock Text="{x:Bind Status}" Margin="50,0,0,0"/>
+                        </StackPanel>
+                       <TextBlock Text="{x:Bind IssueDesc}" Margin="50,0,0,0"/>
                     </StackPanel>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
