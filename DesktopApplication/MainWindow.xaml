@@ -8,7 +8,16 @@
         Title="MainWindow" Height="350" Width="525">
 
 
-    <DataGrid x:Name="RoomGrid" ItemsSource="{Binding Rooms, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AlternatingRowBackground="LightBlue" AlternationCount="2" />
+    <DataGrid x:Name="RoomGrid" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" AlternationCount="2" >
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Room Nr" Binding="{Binding nr}"/>
+            <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
+            <DataGridCheckBoxColumn Header="Vasket" Binding="{Binding vasket}"/>
+            <DataGridCheckBoxColumn Header="Opptatt" Binding="{Binding opptatt}"/>
+            
+
+        </DataGrid.Columns>
+    </DataGrid>
 
 
 

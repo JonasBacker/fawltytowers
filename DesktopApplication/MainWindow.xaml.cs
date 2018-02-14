@@ -31,7 +31,7 @@ namespace DesktopApplication
             Rooms.Add(new Room(2, 3, false, false));
             Rooms.Add(new Room(3, 2, true, true));
             Rooms.Add(new Room(4, 2, true, false));
-            RoomGrid.DataContext = Rooms;
+            RoomGrid.ItemsSource = Rooms;
            
             
             
