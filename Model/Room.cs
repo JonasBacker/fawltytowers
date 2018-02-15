@@ -2,18 +2,13 @@
 
 namespace Model
 {
+    public enum RoomType { enkeltrom,dobbeltrom,familierom}
     public class Room
     {
-        public Room(int nr, int type, bool vasket, bool opptatt)
-        {
-            this.nr = nr;
-            this.type = type;
-            this.vasket = vasket;
-            this.opptatt = opptatt;
-        }
-        public int nr { get; set; }
-        public int type { get; set; }
-        public bool vasket { get; set; }
-        public bool opptatt { get; set; }
+     
+        public int RoomID { get; set; }
+        public RoomType Type { get; set; }
+        public bool Vasket { get; set; }
+        public bool Opptatt { get; set; }
     }
 }
