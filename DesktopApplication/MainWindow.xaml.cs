@@ -24,13 +24,17 @@ namespace DesktopApplication
     {
         public MainWindow()
         {
-
+           
             InitializeComponent();
-            ObservableCollection<Room> Rooms = new ObservableCollection<Room>();
-            Rooms.Add(new Room(1,2,true,false));
-            Rooms.Add(new Room(2, 3, false, false));
-            Rooms.Add(new Room(3, 2, true, true));
-            Rooms.Add(new Room(4, 2, true, false));
+
+            var db = new HotellDBContext() ;
+            db.Room.Add(new Room(RoomType.dobbeltrom, false, false));
+
+                ObservableCollection<Room> Rooms = new ObservableCollection<Room>();
+            Rooms.Add(new Room(RoomType.dobbeltrom,true,false));
+            Rooms.Add(new Room(RoomType.enkeltrom, false, false));
+            Rooms.Add(new Room(RoomType.enkeltrom, true, true));
+            Rooms.Add(new Room(RoomType.familierom, true, false));
             RoomGrid.ItemsSource = Rooms;
            
             

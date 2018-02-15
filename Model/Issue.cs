@@ -11,16 +11,21 @@ namespace Model
         public int IssueID { get; set; }
         public ServiceClass IssueClass { get; set; }
         public string IssueDesc { get; set; }
-        public int RoomNr { get; set; }
+      
+        public string Notis { get; set; }
+
         public CompletionStatus Status { get; set; }
 
         public DateTime TimeIssued { get; set; }
         public DateTime TimeCompleted { get; set; }
-        
-        //public Issue()
-        //{
 
-        //}
+        public virtual Room Room { get; set; }
+
+
+        public Issue()
+        {
+
+        }
 
         //public Issue RegisterNewIssue(int room, ServiceClass sc, string desc)
         //{

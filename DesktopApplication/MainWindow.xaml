@@ -10,10 +10,10 @@
 
     <DataGrid x:Name="RoomGrid" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" AlternationCount="2" >
         <DataGrid.Columns>
-            <DataGridTextColumn Header="Room Nr" Binding="{Binding nr}"/>
-            <DataGridTextColumn Header="Type" Binding="{Binding type}"/>
-            <DataGridCheckBoxColumn Header="Vasket" Binding="{Binding vasket}"/>
-            <DataGridCheckBoxColumn Header="Opptatt" Binding="{Binding opptatt}"/>
+            <DataGridTextColumn Header="Room Nr" Binding="{Binding RoomID}"/>
+            <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+            <DataGridCheckBoxColumn Header="Vasket" Binding="{Binding Vasket}"/>
+            <DataGridCheckBoxColumn Header="Opptatt" Binding="{Binding Opptatt}"/>
             
 
         </DataGrid.Columns>
