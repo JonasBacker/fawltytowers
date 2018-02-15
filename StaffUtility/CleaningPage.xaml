@@ -5,6 +5,10 @@
     xmlns:local="using:StaffUtility"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core" 
+    
     xmlns:local1="using:Model"
     mc:Ignorable="d">
     <Grid Name="g1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
@@ -13,14 +17,19 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
-        <Button Name="cleaning_go_home" Content="Home" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="service_go_home_Click" Grid.Row="2" MinWidth="150" Margin="20,00,00,10"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
+            <Button Name="cleaning_go_home" HorizontalAlignment="Left" VerticalAlignment="Stretch" Click="service_go_home_Click" MinWidth="80" Margin="10,00,00,10">
+                <SymbolIcon Symbol="Home"/>
+            </Button>
+            <Button Name="new_issue" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="80" Margin="10,0,0,10">
+                <SymbolIcon Symbol="Add" Foreground="Green"/>
+            </Button>
+            <Button Name="placeholderbutton" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="80" Margin="10,0,10,10">
+                <SymbolIcon Symbol="More"/>
+            </Button>
+        </StackPanel>
         <TextBlock Name="cleaning_header" HorizontalAlignment="Left" Text="This is the cleaning page" Margin="20,20,0,0" Grid.ColumnSpan="3" IsHitTestVisible="False" FontSize="36"/>
-        <ListView Name="issue_list" ItemsSource="{x:Bind il}" Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Background="#FFECEFFF" Margin="20,0,0,20">
+        <ListView Name="issue_list" ItemsSource="{x:Bind il}" Grid.Row="1" Grid.RowSpan="1" Background="#FFECEFFF" Margin="20,0,20,20">
 
             <ListView.Header>
                 <Grid Margin="10,0,0,0">
@@ -52,9 +61,14 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="40"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{x:Bind RoomNr}" Margin="0,0,20,0" HorizontalTextAlignment="Right" Grid.Column="0"/>
-                                <TextBlock Text="{x:Bind IssueDesc}" Grid.Column="1"/>
+                                <TextBlock Text="{x:Bind RoomNr}" Margin="0,0,20,0" VerticalAlignment="Center" HorizontalTextAlignment="Right" Grid.Column="0"/>
+                                <TextBlock Text="{x:Bind IssueDesc}" Grid.Column="1" VerticalAlignment="Center" />
+                                
+                                <SymbolIcon Symbol="Accept" Grid.Column="2" HorizontalAlignment="Right" Foreground="Green"/>
+                                <Image Source="Assets/vacuum_cleaner.png" Grid.Column="3" Height="40" Width="40"/>
                             </Grid>
                         </SwipeControl>
                     </Border>
@@ -64,12 +78,5 @@
 
 
         </ListView>
-        <Grid Name="InnerButtonGrid" Grid.Row="1" Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <Button Content="Placeholderknapp" Grid.Column="0" Grid.Row="0" Margin="20,0,20,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="80"/>
-            <Button Content="Placeholderknapp" Grid.Column="0" Grid.Row="0" Margin="20,100,20,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="80"/>
-        </Grid>
     </Grid>
 </Page>
