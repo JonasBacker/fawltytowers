@@ -31,7 +31,13 @@ namespace StaffUtility
             il = new ObservableCollection<Issue>();
             for (int i = 1; i <= 10; i++)
             {
-                Issue iss = new Issue().RegisterNewIssue(i, ServiceClass.cleaning, "Clean the room");
+                //Issue iss = new Issue().RegisterNewIssue(i, ServiceClass.cleaning, "Clean the room");
+                Issue iss = new Issue();
+                iss.RoomNr = i;
+                iss.IssueDesc = "Clean the room";
+                iss.IssueClass = ServiceClass.cleaning;
+                iss.TimeIssued = DateTime.Now;
+                iss.TimeCompleted = null;
                 il.Add(iss);
             }
             issue_list.DataContext = il;
