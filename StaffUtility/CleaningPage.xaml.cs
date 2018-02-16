@@ -25,7 +25,7 @@ namespace StaffUtility
     public sealed partial class CleaningPage : Page
     {
         public ObservableCollection<Issue> il;
-        public Issue selectedIssue;
+        public Issue selectedIssue { get; set; }
         public CleaningPage()
         {
             this.InitializeComponent();
@@ -35,6 +35,7 @@ namespace StaffUtility
             {
                 //Issue iss = new Issue().RegisterNewIssue(i, ServiceClass.cleaning, "Clean the room");
                 Issue iss = new Issue();
+                iss.IssueID = i;
                 Room room = new Room(RoomType.enkeltrom, false, false);
                 room.RoomID = i * 100 + i;
                 iss.Room = room;
@@ -61,12 +62,12 @@ namespace StaffUtility
             this.Frame.Navigate(typeof(MainPage));
         }
 
-        private void vacuumIcon_Loaded(object sender, RoutedEventArgs e)
-        {
-            Image image = sender as Image;
-            if (image.Name.Equals("inProgress"))
-                image.Visibility = Visibility.Visible;
-        }
+        //private void vacuumIcon_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    Image image = sender as Image;
+        //    if (image.Name.Equals("inProgress"))
+        //        image.Visibility = Visibility.Visible;
+        //}
 
         private void Finish_PointerPressed(object sender, RoutedEventArgs e)
         {
@@ -77,7 +78,11 @@ namespace StaffUtility
         private void issue_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count != 0)
+            {
                 selectedIssue = (Issue)e.AddedItems.First();
+                selectedItem.Text = selectedIssue.IssueID.ToString();
+            }
+                
             
         }
 
