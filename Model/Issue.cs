@@ -17,7 +17,7 @@ namespace Model
         public CompletionStatus Status { get; set; }
 
         public DateTime TimeIssued { get; set; }
-        public DateTime TimeCompleted { get; set; }
+        public DateTime ? TimeCompleted { get; set; }
 
         public virtual Room Room { get; set; }
 
