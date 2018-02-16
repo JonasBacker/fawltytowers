@@ -5,19 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="443.425" Width="680.02" Background="White">
+    <Grid Margin="11,10,3,35">
+        <ListView Margin="10,70,11,10" Name="romList" ItemsSource="{Binding}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" Header="Rom nr" DisplayMemberBinding="{Binding Path=roomID}" />
+                    <GridViewColumn Width="100" Header="Rom Type" DisplayMemberBinding="{Binding Path=roomType}"/>
+                    <GridViewColumn Width="100" Header="Vasket">
+                        
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox  Margin="40,0,0,0" IsChecked="{Binding Path=vasket}"  IsHitTestVisible="False"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="100" Header="Opptatt">
+                        
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox  Margin="40,0,0,0" IsChecked="{Binding Path=opptatt}"  IsHitTestVisible="False"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Vasket" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Opptatt" HorizontalAlignment="Left" Margin="97,27,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.439,-0.021" Click="Button_Click_1"/>
+    </Grid>
 
 
-    <DataGrid x:Name="RoomGrid" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" AlternationCount="2" >
+    <!--<DataGrid x:Name="RoomGrid" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" AlternationCount="2" SelectionChanged="RoomGrid_SelectionChanged"  >
         <DataGrid.Columns>
-            <DataGridTextColumn Header="Room Nr" Binding="{Binding RoomID}"/>
-            <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
-            <DataGridCheckBoxColumn Header="Vasket" Binding="{Binding Vasket}"/>
-            <DataGridCheckBoxColumn Header="Opptatt" Binding="{Binding Opptatt}"/>
+            <DataGridTextColumn Header="Room Nr" Binding="{Binding roomID}"/>
+            <DataGridTextColumn Header="Type" Binding="{Binding roomType}"/>
+            <DataGridCheckBoxColumn Header="Vasket" Binding="{Binding vasket}"  />
+            <DataGridCheckBoxColumn Header="Opptatt" Binding="{Binding opptatt}"/>
             
 
         </DataGrid.Columns>
-    </DataGrid>
+    </DataGrid>-->
 
 
 

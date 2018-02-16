@@ -22,6 +22,12 @@ namespace StaffUtility
     /// </summary>
     sealed partial class App : Application
     {
+
+        private string connectionString =
+            "metadata=res://*/Model.csdl|res://*/Model.ssdl|res://*/Model.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-9SQREC4;initial catalog=HotellDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;";
+
+        public string ConnectionString { get => connectionString; set => connectionString = value; }
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
