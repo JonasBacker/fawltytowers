@@ -25,16 +25,29 @@ namespace StaffUtility
     public sealed partial class CleaningPage : Page
     {
         public ObservableCollection<Issue> il;
+        public Issue selectedIssue { get; set; }
         public CleaningPage()
         {
             this.InitializeComponent();
             il = new ObservableCollection<Issue>();
-            for (int i = 1; i <= 10; i++)
+            selectedIssue = null;
+            for (int i = 1; i <= 9; i++)
             {
                 //Issue iss = new Issue().RegisterNewIssue(i, ServiceClass.cleaning, "Clean the room");
                 Issue iss = new Issue();
-                iss.RoomNr = i;
+                iss.IssueID = i;
+                Room room = new Room(RoomType.enkeltrom, false, false);
+                room.RoomID = i * 100 + i;
+                iss.Room = room;
                 iss.IssueDesc = "Clean the room";
+
+                if (i % 3 == 0)
+                    iss.Status = CompletionStatus.inProgress;
+                else
+                    iss.Status = CompletionStatus.issued;
+
+                if (i == 5)
+                    iss.IssueDesc = "Clean the damn room or there'll be a lot of trouble young man";
                 iss.IssueClass = ServiceClass.cleaning;
                 iss.TimeIssued = DateTime.Now;
                 iss.TimeCompleted = null;
@@ -48,6 +61,31 @@ namespace StaffUtility
         {
             this.Frame.Navigate(typeof(MainPage));
         }
+
+        //private void vacuumIcon_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    Image image = sender as Image;
+        //    if (image.Name.Equals("inProgress"))
+        //        image.Visibility = Visibility.Visible;
+        //}
+
+        private void Finish_PointerPressed(object sender, RoutedEventArgs e)
+        {
+            il.Remove(selectedIssue);
+            issue_list.DataContext = il;
+        }
+
+        private void issue_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count != 0)
+            {
+                selectedIssue = (Issue)e.AddedItems.First();
+                selectedItem.Text = selectedIssue.IssueID.ToString();
+            }
+                
+            
+        }
+
 
     }
 }
