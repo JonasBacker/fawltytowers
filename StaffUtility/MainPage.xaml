@@ -8,9 +8,24 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Name="go_service" Content="Service" HorizontalAlignment="Center" Margin="25,136,25,-294" VerticalAlignment="Top" Click="Button_Click_1" Height="158" Grid.RowSpan="2" FontSize="72" Width="390"/>
-        <Button Name="go_cleaning" Content="Cleaning" HorizontalAlignment="Center" Margin="25,339,25,-506" Grid.RowSpan="2" VerticalAlignment="Top" Height="167" Width="395" Click="go_cleaning_Click" FontSize="72"/>
-        <Button Name="go_maintenance" Content="Maintenace" HorizontalAlignment="Center" Margin="25,548,25,-721" Grid.RowSpan="2" VerticalAlignment="Top" Height="173" Width="401" Click="go_maintenance_Click" FontSize="72"/>
+        <Button Name="go_service" HorizontalAlignment="Center" Margin="25,136,25,-294" VerticalAlignment="Top" Click="Button_Click_1" Height="158" Grid.RowSpan="2" FontSize="58" Width="390">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <Image Source="Assets/food_drink.png" Height="60"/>
+                <TextBlock Text="Service" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+        <Button Name="go_cleaning" HorizontalAlignment="Center" Margin="25,339,25,-506" Grid.RowSpan="2" VerticalAlignment="Top" Height="167" Width="395" Click="go_cleaning_Click" FontSize="58">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <Image Source="Assets/vacuum_cleaner.png" Height="70"/>
+                <TextBlock Text="Cleaning" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+        <Button Name="go_maintenance" HorizontalAlignment="Center" Margin="25,548,25,-721" Grid.RowSpan="2" VerticalAlignment="Top" Height="173" Width="401" Click="go_maintenance_Click" FontSize="58">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <Image Source="Assets/tools.png" Height="60"/>
+                <TextBlock Text="Maintenance" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
         <TextBlock HorizontalAlignment="Center" Margin="25,49,25,-118" Grid.RowSpan="2" Text="Welcome to Fawlty Towers" TextWrapping="Wrap" FontSize="32" VerticalAlignment="Top" Height="69" Width="386"/>
     </Grid>
 </Page>
