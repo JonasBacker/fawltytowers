@@ -27,15 +27,15 @@ namespace DesktopApplication
            
             InitializeComponent();
 
-            var db = new HotellDBContext() ;
-            db.Rooms.Add(new Room(RoomType.dobbeltrom, true, false));
+            //var db = new HotellDBContext() ;
+            //db.Rooms.Add(new Room(RoomType.dobbeltrom, true, false));
 
-            ObservableCollection<Room> Rooms = new ObservableCollection<Room>();
-            Rooms.Add(new Room(RoomType.dobbeltrom,true,false));
-            Rooms.Add(new Room(RoomType.enkeltrom, false, false));
-            Rooms.Add(new Room(RoomType.enkeltrom, true, true));
-            Rooms.Add(new Room(RoomType.familierom, true, false));
-            RoomGrid.ItemsSource = Rooms;
+            //ObservableCollection<Room> Rooms = new ObservableCollection<Room>();
+            //Rooms.Add(new Room(RoomType.dobbeltrom,true,false));
+            //Rooms.Add(new Room(RoomType.enkeltrom, false, false));
+            //Rooms.Add(new Room(RoomType.enkeltrom, true, true));
+            //Rooms.Add(new Room(RoomType.familierom, true, false));
+            //RoomGrid.ItemsSource = Rooms;
            
             
             

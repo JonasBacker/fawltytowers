@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Util;
+
 
 namespace Booking.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string name, int numTimes = 1)
         {
-            return View();
+            return View(name, numTimes);
         }
 
         public ActionResult About()
