@@ -10,21 +10,42 @@ namespace Booking.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(string name, int numTimes = 1)
+        public ActionResult Index()
         {
-            return View(name, numTimes);
+            return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "About Fawlty Towers";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact Fawlty Towers";
+
+            return View();
+        }
+        public ActionResult Login()
+        {
+            ViewBag.Message = "The login page";
+
+            return View();
+        }
+        public ActionResult Signup()
+        {
+            ViewBag.Message = "The Signup page";
+
+            return View();
+        }
+        public ActionResult YourAccount(string name, string pass)
+        {
+            ViewBag.Name = name;
+            ViewBag.Pass = pass;
+            ViewBag.Message = "Your account.";
+            ViewBag.Title = "Your account ";
 
             return View();
         }
