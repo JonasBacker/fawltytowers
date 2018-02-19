@@ -22,7 +22,6 @@ namespace DesktopApplication
     
         public int customerID { get; set; }
         public string navn { get; set; }
-        public string brukernavn { get; set; }
         public string passord { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
