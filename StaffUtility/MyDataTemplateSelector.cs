@@ -16,13 +16,7 @@ namespace StaffUtility
         protected override DataTemplate SelectTemplateCore(object item,
                                                            DependencyObject container)
         {
-            Issue issue = (Issue)item;
-            Issue selected = StaffPage.selectedIssue;
-            if (selected != null && issue.IssueID == selected.IssueID)
-                return SelectedStateItemTemplate;
-            else
-                    return DefaultStateTemplate;
-            //return base.SelectTemplateCore(item, container);
+                return DefaultStateTemplate;
         }
     }
 }

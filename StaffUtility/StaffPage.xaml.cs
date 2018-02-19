@@ -148,6 +148,23 @@ namespace StaffUtility
             issue_list.DataContext = il;
         }
 
+        private void Progress_PointerPressed(object sender, RoutedEventArgs e)
+        {
+            Image img = (Image)sender;
+            int index = il.IndexOf(selectedIssue);
+            if (il[index].Status == CompletionStatus.issued)
+            {
+                img.Opacity = 1;
+                il[index].Status = CompletionStatus.inProgress;
+            }
+            else
+            {
+                img.Opacity = 0.3;
+                il[index].Status = CompletionStatus.issued;
+            }
+            issue_list.DataContext = il;
+        }
+
         private void issue_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count != 0)

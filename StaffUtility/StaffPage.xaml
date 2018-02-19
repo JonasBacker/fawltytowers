@@ -44,7 +44,7 @@
                 <TextBlock Text="{x:Bind IssueDesc}" FontSize="18" Grid.Column="1" TextWrapping="WrapWholeWords" VerticalAlignment="Center" />
 
                 <Image Source="{Binding IssueClass, Converter={StaticResource scToFp}}" Grid.Column="2" Height="40" Width="40" 
-                               Opacity="{Binding Status, Converter={StaticResource stToOpac}}" HorizontalAlignment="Right"/>
+                               Opacity="{Binding Status, Converter={StaticResource stToOpac}}" HorizontalAlignment="Right" PointerPressed="Progress_PointerPressed"/>
 
                 <Viewbox Grid.Column="3" Height="40" Width="40" PointerPressed="Finish_PointerPressed" HorizontalAlignment="Right">
                     <SymbolIcon Symbol="Accept" Foreground="Green"/>
