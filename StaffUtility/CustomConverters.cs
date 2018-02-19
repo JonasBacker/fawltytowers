@@ -84,4 +84,25 @@ namespace StaffUtility
         }
     }
 
+    public class StatusToOpacityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            CompletionStatus inStatus = (CompletionStatus)value;
+
+            
+            double opac = 1.0;
+
+            if (inStatus != CompletionStatus.inProgress)
+                opac = 0.3;
+
+            return opac;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 }
