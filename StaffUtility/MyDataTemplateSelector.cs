@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
-using Model;
 using Windows.UI.Xaml.Controls;
 
 namespace StaffUtility
@@ -19,7 +18,7 @@ namespace StaffUtility
         {
             Issue issue = (Issue)item;
             Issue selected = StaffPage.selectedIssue;
-            if ( selected != null && issue.IssueID == selected.IssueID)
+            if (issue.IssueID == selected.IssueID)
                 return SelectedStateItemTemplate;
             else
                     return DefaultStateTemplate;

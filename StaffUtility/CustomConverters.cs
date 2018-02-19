@@ -10,9 +10,9 @@ namespace StaffUtility
         {
             Visibility vis;
 
-            switch((Model.CompletionStatus) value)
+            switch((CompletionStatus) value)
             {
-                case Model.CompletionStatus.inProgress:
+                case CompletionStatus.inProgress:
                     vis = Visibility.Visible;
                     break;
                 default:
@@ -59,15 +59,15 @@ namespace StaffUtility
         {
             string imagefile = "";
 
-            switch ((Model.ServiceClass) value)
+            switch ((ServiceClass) value)
             {
-                case Model.ServiceClass.cleaning:
+                case ServiceClass.cleaning:
                     imagefile = "Assets/vacuum_cleaner.png";
                     break;
-                case Model.ServiceClass.service:
+                case ServiceClass.service:
                     imagefile = "Assets/food_drink.png";
                     break;
-                case Model.ServiceClass.maintenance:
+                case ServiceClass.maintenance:
                     imagefile = "Assets/tools.png";
                     break;
                 default:

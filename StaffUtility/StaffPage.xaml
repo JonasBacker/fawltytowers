@@ -8,7 +8,6 @@
     
 
 
-    xmlns:local1="using:Model"
     mc:Ignorable="d">
     <Page.Resources>
         <!--Converter : inProgress = Visible, else Collapsed-->
@@ -17,7 +16,7 @@
         <local:SelectedObjectToVisibilityConverter x:Key="sObToVis"/>
         <!--Converter : velger rett ikonfil for serviceClass -->
         <local:ServiceClassToFilepathConverter x:Key="scToFp"/>
-        <DataTemplate x:Key="defaultState" x:DataType="local1:Issue">
+        <DataTemplate x:Key="defaultState" x:DataType="local:Issue">
             <Grid MinHeight="70">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="70"/>
@@ -32,7 +31,7 @@
                                Visibility="{Binding Status, Converter={StaticResource stToVis}}" HorizontalAlignment="Right"/>
             </Grid>
         </DataTemplate>
-        <DataTemplate x:Key="selectedState" x:DataType="local1:Issue">
+        <DataTemplate x:Key="selectedState" x:DataType="local:Issue">
             <Grid MinHeight="70">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="70"/>
