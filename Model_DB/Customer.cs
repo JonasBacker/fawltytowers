@@ -7,26 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DesktopApplication
+namespace Model_DB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Room
+    public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Room()
+        public Customer()
         {
-            this.Issue = new HashSet<Issue>();
+            this.Booking = new HashSet<Booking>();
         }
     
-        public int roomID { get; set; }
-        public int roomType { get; set; }
-        public bool vasket { get; set; }
-        public bool opptatt { get; set; }
-        public Nullable<System.DateTime> ledigTil { get; set; }
+        public int customerID { get; set; }
+        public string navn { get; set; }
+        public string passord { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Issue> Issue { get; set; }
+        public virtual ICollection<Booking> Booking { get; set; }
     }
 }

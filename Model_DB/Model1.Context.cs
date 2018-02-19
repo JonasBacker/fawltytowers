@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DesktopApplication
+namespace Model_DB
 {
     using System;
     using System.Data.Entity;

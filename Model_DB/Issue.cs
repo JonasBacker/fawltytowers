@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DesktopApplication
+namespace Model_DB
 {
     using System;
     using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace DesktopApplication
     public partial class Issue
     {
         public int issueID { get; set; }
-        public Nullable<int> room { get; set; }
+        public int room { get; set; }
         public int issueType { get; set; }
         public string issueDescription { get; set; }
         public string note { get; set; }

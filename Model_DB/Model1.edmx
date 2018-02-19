@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="dat154_18_2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="dat154_18_2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Booking">
           <Key>
             <PropertyRef Name="bookingID" />
@@ -21,7 +21,6 @@
           </Key>
           <Property Name="customerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="navn" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="brukernavn" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="passord" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="Issue">
@@ -29,7 +28,7 @@
             <PropertyRef Name="issueID" />
           </Key>
           <Property Name="issueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="room" Type="int" />
+          <Property Name="room" Type="int" Nullable="false" />
           <Property Name="issueType" Type="int" Nullable="false" />
           <Property Name="issueDescription" Type="nvarchar" MaxLength="200" />
           <Property Name="note" Type="nvarchar" MaxLength="200" />
@@ -59,8 +58,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Issue__room__1367E606">
-          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+        <Association Name="FK__Issue__room__145C0A3F">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
           <End Role="Issue" Type="Self.Issue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
@@ -80,12 +79,13 @@
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK__Issue__room__1367E606" Association="Self.FK__Issue__room__1367E606">
+          <AssociationSet Name="FK__Issue__room__145C0A3F" Association="Self.FK__Issue__room__145C0A3F">
             <End Role="Room" EntitySet="Room" />
             <End Role="Issue" EntitySet="Issue" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dat154_18_2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -98,7 +98,7 @@
           <Property Name="roomtype" Type="Int32" Nullable="false" />
           <Property Name="checkinDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="checkoutDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__Booking__custome__03317E3D" FromRole="Booking" ToRole="Customer" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Booking__custome__108B795B" FromRole="Booking" ToRole="Customer" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -106,23 +106,22 @@
           </Key>
           <Property Name="customerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="navn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="brukernavn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="passord" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Booking" Relationship="Self.FK__Booking__custome__03317E3D" FromRole="Customer" ToRole="Booking" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK__Booking__custome__108B795B" FromRole="Customer" ToRole="Booking" />
         </EntityType>
         <EntityType Name="Issue">
           <Key>
             <PropertyRef Name="issueID" />
           </Key>
           <Property Name="issueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="room" Type="Int32" />
+          <Property Name="room" Type="Int32" Nullable="false" />
           <Property Name="issueType" Type="Int32" Nullable="false" />
           <Property Name="issueDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="status" Type="Int32" />
           <Property Name="timeIssued" Type="DateTime" Precision="3" />
           <Property Name="timeCompleted" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Room1" Relationship="Self.FK__Issue__room__060DEAE8" FromRole="Issue" ToRole="Room" />
+          <NavigationProperty Name="Room1" Relationship="Self.FK__Issue__room__145C0A3F" FromRole="Issue" ToRole="Room" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
@@ -132,10 +131,10 @@
           <Property Name="roomType" Type="Int32" Nullable="false" />
           <Property Name="vasket" Type="Boolean" Nullable="false" />
           <Property Name="opptatt" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Issue" Relationship="Self.FK__Issue__room__060DEAE8" FromRole="Room" ToRole="Issue" />
           <Property Name="ledigTil" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Issue" Relationship="Self.FK__Issue__room__145C0A3F" FromRole="Room" ToRole="Issue" />
         </EntityType>
-        <Association Name="FK__Booking__custome__03317E3D">
+        <Association Name="FK__Booking__custome__108B795B">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
           <ReferentialConstraint>
@@ -147,8 +146,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Issue__room__060DEAE8">
-          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+        <Association Name="FK__Issue__room__145C0A3F">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
           <End Role="Issue" Type="Self.Issue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
@@ -164,11 +163,11 @@
           <EntitySet Name="Customer" EntityType="Self.Customer" />
           <EntitySet Name="Issue" EntityType="Self.Issue" />
           <EntitySet Name="Room" EntityType="Self.Room" />
-          <AssociationSet Name="FK__Booking__custome__03317E3D" Association="Self.FK__Booking__custome__03317E3D">
+          <AssociationSet Name="FK__Booking__custome__108B795B" Association="Self.FK__Booking__custome__108B795B">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
-          <AssociationSet Name="FK__Issue__room__060DEAE8" Association="Self.FK__Issue__room__060DEAE8">
+          <AssociationSet Name="FK__Issue__room__145C0A3F" Association="Self.FK__Issue__room__145C0A3F">
             <End Role="Room" EntitySet="Room" />
             <End Role="Issue" EntitySet="Issue" />
           </AssociationSet>
@@ -195,7 +194,6 @@
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="customerID" ColumnName="customerID" />
                 <ScalarProperty Name="navn" ColumnName="navn" />
-                <ScalarProperty Name="brukernavn" ColumnName="brukernavn" />
                 <ScalarProperty Name="passord" ColumnName="passord" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -217,11 +215,11 @@
           <EntitySetMapping Name="Room">
             <EntityTypeMapping TypeName="dat154_18_2Model.Room">
               <MappingFragment StoreEntitySet="Room">
-                <ScalarProperty Name="ledigTil" ColumnName="ledigTil" />
                 <ScalarProperty Name="roomID" ColumnName="roomID" />
                 <ScalarProperty Name="roomType" ColumnName="roomType" />
                 <ScalarProperty Name="vasket" ColumnName="vasket" />
                 <ScalarProperty Name="opptatt" ColumnName="opptatt" />
+                <ScalarProperty Name="ledigTil" ColumnName="ledigTil" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
