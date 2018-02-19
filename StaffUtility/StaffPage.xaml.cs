@@ -155,10 +155,21 @@ namespace StaffUtility
                 selectedIssue = (Issue)e.AddedItems.First();
                 selectedItem.Text = selectedIssue.IssueID.ToString();
             }
+
+            foreach (var item in e.AddedItems)
+            {
+                ListViewItem lvi = (sender as ListView).ContainerFromItem(item) as ListViewItem;
+                lvi.ContentTemplate = (DataTemplate)this.Resources["selectedState"];
+            }
+
+            foreach (var item in e.RemovedItems)
+            {
+                ListViewItem lvi = (sender as ListView).ContainerFromItem(item) as ListViewItem;
+                lvi.ContentTemplate = (DataTemplate)this.Resources["defaultState"];
+            }
                 
             
         }
-
 
     }
 }

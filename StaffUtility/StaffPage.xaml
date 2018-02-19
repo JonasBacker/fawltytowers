@@ -104,7 +104,7 @@
             </ListView.ItemContainerStyle>
 
             <ListView.ItemTemplateSelector>
-                <local:MyDataTemplateSelector x:Key="MyDataTemplateSelector" DefaultStateTemplate="{StaticResource defaultState}" SelectedStateItemTemplate="{StaticResource selectedState}">
+                <local:MyDataTemplateSelector DefaultStateTemplate="{StaticResource defaultState}" SelectedStateItemTemplate="{StaticResource selectedState}">
                 </local:MyDataTemplateSelector>
 
             </ListView.ItemTemplateSelector>
