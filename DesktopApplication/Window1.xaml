@@ -1,0 +1,23 @@
+﻿<Window x:Class="DesktopApplication.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopApplication"
+        mc:Ignorable="d"
+        Title="Window1" Height="638.256" Width="421.849">
+    <Grid Margin="0,0,0,-3" Height="610" VerticalAlignment="Top">
+        <Label Content="Romnr:" HorizontalAlignment="Left" Margin="25,31,0,0" VerticalAlignment="Top" Width="49"/>
+        
+        <Label Name="romnr" HorizontalAlignment="Left" Margin="182,31,0,0" VerticalAlignment="Top"/>
+        
+        <Label Content="Navn" HorizontalAlignment="Left" Margin="25,75,0,0" VerticalAlignment="Top"/>
+        <Label Content="Innsjekk Dato:" HorizontalAlignment="Left" Margin="25,135,0,0" VerticalAlignment="Top"/>
+        <Label Content="Utsjekk Dato:&#xD;&#xA;" HorizontalAlignment="Left" Margin="25,357,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="182,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Calendar HorizontalAlignment="Left" Margin="182,140,0,0" VerticalAlignment="Top" Height="167" Width="170"/>
+        <Calendar HorizontalAlignment="Left" Margin="182,378,0,0" VerticalAlignment="Top"/>
+        <Button Content="Reserver" HorizontalAlignment="Left" Margin="25,565,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

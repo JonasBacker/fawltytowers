@@ -101,11 +101,15 @@ namespace DesktopApplication
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            using (var db = new dat154_18_2Entities())
-            {
-               
-                    
-                    }
+            if (romList.SelectedItem != null) {
+                using (var db = new dat154_18_2Entities())
+                {
+                    Room selected = (Room)romList.SelectedItem;
+                    Window w = new Window1(db, selected);
+                    w.ShowDialog();
+                }
+
+            }
 
         }
 
@@ -113,5 +117,8 @@ namespace DesktopApplication
         {
 
         }
+
+
+
     }
 }
