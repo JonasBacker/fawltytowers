@@ -13,9 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Model;
+using Model_DB;
 using System.Data.Entity;
-using ClassLibrary1;
+
 
 namespace DesktopApplication
 {
