@@ -18,7 +18,7 @@ namespace StaffUtility
         {
             Issue issue = (Issue)item;
             Issue selected = StaffPage.selectedIssue;
-            if (issue.IssueID == selected.IssueID)
+            if (selected != null && issue.IssueID == selected.IssueID)
                 return SelectedStateItemTemplate;
             else
                     return DefaultStateTemplate;
