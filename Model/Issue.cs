@@ -27,6 +27,16 @@ namespace Model
 
         }
 
+        public class DefaultStateIssue: Issue
+        {
+
+        }
+
+        public class SelectedStateIssue : Issue
+        {
+
+        }
+
         //public Issue RegisterNewIssue(int room, ServiceClass sc, string desc)
         //{
         //    // sette issuenr?

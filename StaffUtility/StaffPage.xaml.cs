@@ -25,14 +25,14 @@ namespace StaffUtility
     public sealed partial class StaffPage : Page
     {
         public ObservableCollection<Issue> il;
-        public Issue selectedIssue { get; set; }
+        public static Issue selectedIssue { get; set; }
 
         public string testString { get; set; } = "teststring";
 
         public string serviceclass { get; set; } = "";
         public StaffPage()
         {
-            // this.InitializeComponent();
+             this.InitializeComponent();
 
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -54,7 +54,7 @@ namespace StaffUtility
                     for (int i = 1; i <= 9; i++)
                     {
 
-                        Issue iss = new Issue();
+                        Issue iss = new Issue.SelectedStateIssue();
                         iss.IssueID = i;
                         Room room = new Room(RoomType.enkeltrom, false, false);
                         room.RoomID = i * 100 + i;
@@ -80,7 +80,7 @@ namespace StaffUtility
                     for (int i = 1; i <= 9; i++)
                     {
 
-                        Issue iss = new Issue();
+                        Issue iss = new Issue.DefaultStateIssue();
                         iss.IssueID = i;
                         Room room = new Room(RoomType.enkeltrom, false, false);
                         room.RoomID = i * 100 + i;
@@ -106,7 +106,7 @@ namespace StaffUtility
                     for (int i = 1; i <= 9; i++)
                     {
 
-                        Issue iss = new Issue();
+                        Issue iss = new Issue.DefaultStateIssue();
                         iss.IssueID = i;
                         Room room = new Room(RoomType.enkeltrom, false, false);
                         room.RoomID = i * 100 + i;
@@ -155,6 +155,7 @@ namespace StaffUtility
             {
                 selectedIssue = (Issue)e.AddedItems.First();
                 selectedItem.Text = selectedIssue.IssueID.ToString();
+                issue_list.DataContext = il;
             }
                 
             
