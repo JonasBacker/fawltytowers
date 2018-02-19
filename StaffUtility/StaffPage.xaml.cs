@@ -126,7 +126,10 @@ namespace StaffUtility
                     }
                     break;
             }
-
+            // Tried to get data from database
+            //Model.IssueGetter ig = new Model.IssueGetter();
+            //ig.LoadData();
+            //il = ig.Issues;
 
             issue_list.DataContext = il;
         }
