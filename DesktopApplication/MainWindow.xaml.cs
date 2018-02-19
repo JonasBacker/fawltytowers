@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
 using System.Data.Entity;
+using ClassLibrary1;
 
 namespace DesktopApplication
 {
