@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClassLibrary1
+namespace Model_DB
 {
     using System;
     using System.Collections.Generic;

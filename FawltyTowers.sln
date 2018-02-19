@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopApplication", "DesktopApplication\DesktopApplication.csproj", "{DB577134-9FDF-480C-B7B9-7DDC5D5F7819}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -12,8 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffUtility", "StaffUtilit
 	ProjectSection(ProjectDependencies) = postProject
 		{4F958661-27AC-4FD6-847B-E47678B85538} = {4F958661-27AC-4FD6-847B-E47678B85538}
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booking", "Booking\Booking.csproj", "{22E0E5D8-7166-4AD7-9C7C-C58BA4638740}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -72,22 +70,6 @@ Global
 		{95F949CD-EAB5-409E-B85A-14DB988467C5}.Release|x86.ActiveCfg = Release|x86
 		{95F949CD-EAB5-409E-B85A-14DB988467C5}.Release|x86.Build.0 = Release|x86
 		{95F949CD-EAB5-409E-B85A-14DB988467C5}.Release|x86.Deploy.0 = Release|x86
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Debug|ARM.Build.0 = Debug|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Debug|x64.Build.0 = Debug|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Debug|x86.Build.0 = Debug|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Release|ARM.ActiveCfg = Release|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Release|ARM.Build.0 = Release|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Release|x64.ActiveCfg = Release|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Release|x64.Build.0 = Release|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Release|x86.ActiveCfg = Release|Any CPU
-		{BA04FAFE-96D9-40C2-BFF4-2F7ACBBF2F08}.Release|x86.Build.0 = Release|Any CPU
 		{22E0E5D8-7166-4AD7-9C7C-C58BA4638740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{22E0E5D8-7166-4AD7-9C7C-C58BA4638740}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22E0E5D8-7166-4AD7-9C7C-C58BA4638740}.Debug|ARM.ActiveCfg = Debug|Any CPU
