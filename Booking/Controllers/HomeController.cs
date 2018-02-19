@@ -28,8 +28,9 @@ namespace Booking.Controllers
 
             return View();
         }
-        public ActionResult Login()
+        public ActionResult Login(string name)
         {
+            ViewBag.Name = name;
             ViewBag.Message = "The login page";
 
             return View();
@@ -40,10 +41,9 @@ namespace Booking.Controllers
 
             return View();
         }
-        public ActionResult YourAccount(string name, string pass)
+        public ActionResult YourAccount(string name)
         {
             ViewBag.Name = name;
-            ViewBag.Pass = pass;
             ViewBag.Message = "Your account.";
             ViewBag.Title = "Your account ";
 
