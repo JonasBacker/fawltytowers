@@ -26,14 +26,18 @@ namespace StaffUtility
     {
         public ObservableCollection<Issue> il;
         public Issue selectedIssue { get; set; }
+        public ServiceClass serviceclass { get; set; } = ServiceClass.cleaning; // sett denne fra sender knappen på mainpage
         public CleaningPage()
         {
             this.InitializeComponent();
+
+            // TODO: sette serviceClass
+
             il = new ObservableCollection<Issue>();
             selectedIssue = null;
             for (int i = 1; i <= 9; i++)
             {
-                //Issue iss = new Issue().RegisterNewIssue(i, ServiceClass.cleaning, "Clean the room");
+
                 Issue iss = new Issue();
                 iss.IssueID = i;
                 Room room = new Room(RoomType.enkeltrom, false, false);
