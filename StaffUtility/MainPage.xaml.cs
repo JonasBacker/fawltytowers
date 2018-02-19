@@ -28,24 +28,20 @@ namespace StaffUtility
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(ServicePage));
-        }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(ServicePage));
+            this.Frame.Navigate(typeof(StaffPage), "Service");
         }
 
         private void go_cleaning_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(CleaningPage));
+            
+            this.Frame.Navigate(typeof(StaffPage), "Cleaning");
         }
 
         private void go_maintenance_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MaintenancePage));
+            this.Frame.Navigate(typeof(StaffPage), "Maintenance");
         }
     }
 }

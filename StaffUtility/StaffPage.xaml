@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="StaffUtility.CleaningPage"
+    x:Class="StaffUtility.StaffPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:StaffUtility"
@@ -28,10 +28,9 @@
             <Button Name="placeholderbutton" HorizontalAlignment="Left" VerticalAlignment="Stretch" MinWidth="80" Margin="10,0,10,10">
                 <SymbolIcon Symbol="More"/>
             </Button>
-            <!--<TextBlock Name="debugBox" Text="{Binding DataContext.ToString  ,ElementName=issue_list}"></TextBlock>-->
-            
+
         </StackPanel>
-        <TextBlock Name="cleaning_header" HorizontalAlignment="Center" Text="Cleaning" Margin="20,20,0,0" Grid.ColumnSpan="3" IsHitTestVisible="False" FontSize="36"/>
+        <TextBlock Name="page_header" HorizontalAlignment="Center" Text="Page Headline not set" Margin="20,20,0,0" Grid.ColumnSpan="3" IsHitTestVisible="False" FontSize="36"/>
         <Grid Margin="20,0,20,0"  Grid.Row="1" HorizontalAlignment="Stretch" Background="#FFECEFFF">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="82"/>
@@ -93,6 +92,7 @@
                                  Visibility="{Binding IssueID, Converter={StaticResource sObToVis}, ConverterParameter={ Binding Text , ElementName=selectedItem } }">
                             <SymbolIcon Symbol="Accept" Foreground="Green"/>
                         </Viewbox>-->
+                        
                         <Viewbox Grid.Column="3" Height="40" Width="40" PointerPressed="Finish_PointerPressed" HorizontalAlignment="Right">
                             <SymbolIcon Symbol="Accept" Foreground="Green"/>
                         </Viewbox>
