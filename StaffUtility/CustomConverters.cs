@@ -53,4 +53,35 @@ namespace StaffUtility
         }
     }
 
+    public class ServiceClassToFilepathConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            string imagefile = "";
+
+            switch ((Model.ServiceClass) value)
+            {
+                case Model.ServiceClass.cleaning:
+                    imagefile = "Assets/vacuum_cleaner.png";
+                    break;
+                case Model.ServiceClass.service:
+                    imagefile = "Assets/food_drink.png";
+                    break;
+                case Model.ServiceClass.maintenance:
+                    imagefile = "Assets/tools.png";
+                    break;
+                default:
+                    imagefile = "Assets/Square150x150Logo.scale - 200.png";
+                    break;
+            }
+
+            return imagefile;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 }
