@@ -119,8 +119,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\Model_DB.csproj">
-      <Project>{4F958661-27AC-4FD6-847B-E47678B85538}</Project>
+    <ProjectReference Include="..\Model_DB\Model_DB.csproj">
+      <Project>{f24a8b7e-4cc1-4fab-a46d-b4f0deffce11}</Project>
       <Name>Model_DB</Name>
     </ProjectReference>
   </ItemGroup>
