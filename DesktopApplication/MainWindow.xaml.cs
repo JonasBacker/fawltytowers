@@ -30,7 +30,7 @@ namespace DesktopApplication
 
             using(var db = new dat154_18_2Entities())
             {
-                var room = new Room { roomType = 1, vasket = false, opptatt = false };
+                var room = new Room { roomType = 1, ledigTil = new DateTime(2018,07,15) , vasket = false, opptatt = false };
                 db.Room.Add(room);
                 db.SaveChanges();
 
@@ -95,6 +95,21 @@ namespace DesktopApplication
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            using (var db = new dat154_18_2Entities())
+            {
+               
+                    
+                    }
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
         {
 
         }

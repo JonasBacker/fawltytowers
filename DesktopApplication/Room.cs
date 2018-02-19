@@ -24,6 +24,7 @@ namespace DesktopApplication
         public int roomType { get; set; }
         public bool vasket { get; set; }
         public bool opptatt { get; set; }
+        public Nullable<System.DateTime> ledigTil { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Issue> Issue { get; set; }
