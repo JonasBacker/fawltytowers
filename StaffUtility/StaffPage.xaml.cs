@@ -71,6 +71,7 @@ namespace StaffUtility
             il.Remove(selectedIssue);
             selectedIssue.status = CompletionStatus.completed;
             ig.Update(selectedIssue);
+            il = ig.LoadUncompleted();
             issue_list.DataContext = il;
         }
 
