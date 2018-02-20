@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,7 +28,7 @@ namespace StaffUtility
         public static Issue selectedIssue { get; set; }
 
         public string testString { get; set; } = "teststring";
-
+        private Model.IssueGetter ig = new Model.IssueGetter();
         public string serviceclass { get; set; } = "";
         public StaffPage()
         {
@@ -36,8 +37,7 @@ namespace StaffUtility
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.InitializeComponent();
-
+            
             var parameter = e.Parameter as String;
             serviceclass = parameter;
 
@@ -46,92 +46,13 @@ namespace StaffUtility
 
             page_header.Text = serviceclass;
             
-            switch (serviceclass)
-            {
-                case "Cleaning":
+            
+            il = ig.LoadAll();
 
-                    for (int i = 1; i <= 9; i++)
-                    {
-
-                        Issue iss = new Issue.SelectedStateIssue();
-                        iss.IssueID = i;
-                        Room room = new Room(RoomType.enkeltrom, false, false);
-                        room.RoomID = i * 100 + i;
-                        iss.Room = room;
-                        iss.IssueDesc = "Clean the room";
-
-                        if (i % 3 == 0)
-                            iss.Status = CompletionStatus.inProgress;
-                        else
-                            iss.Status = CompletionStatus.issued;
-
-                        if (i == 5)
-                            iss.IssueDesc = "Clean the damn room or there'll be a lot of trouble young man";
-                        iss.IssueClass = ServiceClass.cleaning;
-                        iss.TimeIssued = DateTime.Now;
-                        iss.TimeCompleted = null;
-                        il.Add(iss);
-                    }
-                    break;
-
-                case "Service":
-
-                    for (int i = 1; i <= 9; i++)
-                    {
-
-                        Issue iss = new Issue.DefaultStateIssue();
-                        iss.IssueID = i;
-                        Room room = new Room(RoomType.enkeltrom, false, false);
-                        room.RoomID = i * 100 + i;
-                        iss.Room = room;
-                        iss.IssueDesc = "Roomservice requested";
-
-                        if (i % 3 == 0)
-                            iss.Status = CompletionStatus.inProgress;
-                        else
-                            iss.Status = CompletionStatus.issued;
-
-                        if (i == 5)
-                            iss.IssueDesc = "Complaints about noise";
-                        iss.IssueClass = ServiceClass.service;
-                        iss.TimeIssued = DateTime.Now;
-                        iss.TimeCompleted = null;
-                        il.Add(iss);
-                    }
-                    break;
-
-                case "Maintenance":
-
-                    for (int i = 1; i <= 9; i++)
-                    {
-
-                        Issue iss = new Issue.DefaultStateIssue();
-                        iss.IssueID = i;
-                        Room room = new Room(RoomType.enkeltrom, false, false);
-                        room.RoomID = i * 100 + i;
-                        iss.Room = room;
-                        iss.IssueDesc = "Leaky toilet";
-
-                        if (i % 3 == 0)
-                            iss.Status = CompletionStatus.inProgress;
-                        else
-                            iss.Status = CompletionStatus.issued;
-
-                        if (i == 5)
-                            iss.IssueDesc = "Rats in the walls";
-                        iss.IssueClass = ServiceClass.maintenance;
-                        iss.TimeIssued = DateTime.Now;
-                        iss.TimeCompleted = null;
-                        il.Add(iss);
-                    }
-                    break;
-            }
-            // Tried to get data from database
-            //Model.IssueGetter ig = new Model.IssueGetter();
-            //ig.LoadData();
-            //il = ig.Issues;
 
             issue_list.DataContext = il;
+            this.InitializeComponent();
+
         }
         private void service_go_home_Click(object sender, RoutedEventArgs e)
         {
@@ -155,15 +76,15 @@ namespace StaffUtility
         {
             Image img = (Image)sender;
             int index = il.IndexOf(selectedIssue);
-            if (il[index].Status == CompletionStatus.issued)
+            if (il[index].status == CompletionStatus.issued)
             {
                 img.Opacity = 1;
-                il[index].Status = CompletionStatus.inProgress;
+                il[index].status = CompletionStatus.inProgress;
             }
             else
             {
                 img.Opacity = 0.3;
-                il[index].Status = CompletionStatus.issued;
+                il[index].status = CompletionStatus.issued;
             }
             issue_list.DataContext = il;
         }
@@ -173,7 +94,7 @@ namespace StaffUtility
             if (e.AddedItems.Count != 0)
             {
                 selectedIssue = (Issue)e.AddedItems.First();
-                selectedItem.Text = selectedIssue.IssueID.ToString();
+                selectedItem.Text = selectedIssue.issueID.ToString();
             }
 
             foreach (var item in e.AddedItems)

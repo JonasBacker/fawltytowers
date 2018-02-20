@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -17,9 +18,10 @@ namespace Booking.Controllers
         private dat154_18_2Entities db = new dat154_18_2Entities();
 
         // GET: api/Issues
-        public IQueryable<Issue> GetIssue()
+        public ObservableCollection<Issue> GetIssue()
         {
-            return db.Issue;
+            db.Issue.Load();
+            return db.Issue.Local;
         }
 
         // GET: api/Issues/5

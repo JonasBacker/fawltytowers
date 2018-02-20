@@ -22,7 +22,5 @@ namespace Model_DB
         public Nullable<int> status { get; set; }
         public Nullable<System.DateTime> timeIssued { get; set; }
         public Nullable<System.DateTime> timeCompleted { get; set; }
-    
-        public virtual Room Room1 { get; set; }
     }
 }

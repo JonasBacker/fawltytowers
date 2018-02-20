@@ -121,7 +121,6 @@
           <Property Name="status" Type="Int32" />
           <Property Name="timeIssued" Type="DateTime" Precision="3" />
           <Property Name="timeCompleted" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Room1" Relationship="Self.FK__Issue__room__145C0A3F" FromRole="Issue" ToRole="Room" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
