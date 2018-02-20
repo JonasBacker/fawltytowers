@@ -35,23 +35,15 @@
         <Button Name="VasketButton" Content="Vasket" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Name="OpptattButton" Content="Opptatt" HorizontalAlignment="Left" Margin="97,27,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.439,-0.021" Click="Button_Click"/>
         <Button Content="Reserver" HorizontalAlignment="Left" Margin="185,27,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
-        <Button Content="Reservasjoner" HorizontalAlignment="Left" Margin="271,27,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
-        <ComboBox Text="Romtype" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" Margin="404,27,0,0" VerticalAlignment="Top" Width="120"/>
-        <CheckBox Name="VasketCheck" Content="Vasket" HorizontalAlignment="Left" Margin="556,15,0,0" VerticalAlignment="Top" Checked="VasketCheck_Checked" Unchecked="VasketCheck_Unchecked"/>
-        <CheckBox Name="LedigCheck" Content="Ledig" Margin="556,37,0,0" HorizontalAlignment="Left" Width="126" Height="40" VerticalAlignment="Top" Unchecked="LedigCheck_Unchecked" Checked="LedigCheck_Checked"/>
+        <Button Content="Reservasjoner" HorizontalAlignment="Left" Margin="271,27,0,0" VerticalAlignment="Top" Width="80" Click="Button_Click_3"/>
+        <ComboBox Name="romtypeCombo" Text="Romtype" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" Margin="404,27,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="romtypeCombo_SelectionChanged">
+            <ComboBoxItem>Alle typer</ComboBoxItem>
+            <ComboBoxItem>Enkeltrom</ComboBoxItem>
+            <ComboBoxItem>Dobbeltrom</ComboBoxItem>
+        </ComboBox>
+        <CheckBox Name="VasketCheck"  IsChecked="False" Content="Vasket" HorizontalAlignment="Left" Margin="556,15,0,0" VerticalAlignment="Top" Checked="VasketCheck_Checked" Unchecked="VasketCheck_Unchecked"/>
+        <CheckBox Name="LedigCheck" IsChecked="False" Content="Ledig" Margin="556,37,0,0" HorizontalAlignment="Left" Width="126" Height="40" VerticalAlignment="Top" Unchecked="LedigCheck_Unchecked" Checked="LedigCheck_Checked"/>
     </Grid>
-
-
-    <!--<DataGrid x:Name="RoomGrid" AutoGenerateColumns="False" AlternatingRowBackground="LightBlue" AlternationCount="2" SelectionChanged="RoomGrid_SelectionChanged"  >
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="Room Nr" Binding="{Binding roomID}"/>
-            <DataGridTextColumn Header="Type" Binding="{Binding roomType}"/>
-            <DataGridCheckBoxColumn Header="Vasket" Binding="{Binding vasket}"  />
-            <DataGridCheckBoxColumn Header="Opptatt" Binding="{Binding opptatt}"/>
-            
-
-        </DataGrid.Columns>
-    </DataGrid>-->
 
 
 
