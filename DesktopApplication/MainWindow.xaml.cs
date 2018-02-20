@@ -34,16 +34,15 @@ namespace DesktopApplication
            
             InitializeComponent();
             db = new dat154_18_2Entities();
-            using(var db = new dat154_18_2Entities())
-            {
-                var room = new Room { roomType = 1, ledigTil = new DateTime(2018,07,15) , vasket = false, opptatt = false };
-                db.Room.Add(room);
-                db.SaveChanges();
 
-                db.Room.Load();
-                romList.DataContext = db.Room.Local;
+            var room = new Room { roomType = 2, ledigTil = new DateTime(2018, 07, 15), vasket = false, opptatt = false };
+            db.Room.Add(room);
+            db.SaveChanges();
 
-            }
+            db.Room.Load();
+            romList.DataContext = romtypeCombo.DataContext = db.Room.Local;
+           
+            
 
         }
 
@@ -74,6 +73,8 @@ namespace DesktopApplication
                     db.SaveChanges();
 
                     db.Room.Load();
+
+
 
                     if (LedigCheck.IsChecked ?? false)
                         LedigCheck_Checked(null, null);
@@ -153,6 +154,37 @@ namespace DesktopApplication
             else
                 l = db.Room.Where(r => !r.opptatt).ToList();
             romList.DataContext = l;
+        }
+
+        private void romtypeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (romtypeCombo.SelectedIndex == 0)
+            {
+                if (LedigCheck.IsChecked ?? false)
+                    LedigCheck_Checked(null, null);
+                else if (VasketCheck.IsChecked ?? false)
+                    VasketCheck_Checked(null, null);
+                else
+                    romList.DataContext = db.Room.ToList();
+            }else 
+            {
+                List<Room> l;
+                if((VasketCheck.IsChecked ?? false) && (LedigCheck.IsChecked ?? false))
+                {
+                    l = db.Room.Where(r => !r.opptatt && r.vasket && r.roomType == romtypeCombo.SelectedIndex).ToList();
+                }else if(VasketCheck.IsChecked ?? false)
+                {
+                    l = db.Room.Where(r =>  r.vasket && r.roomType == romtypeCombo.SelectedIndex).ToList();
+                }else if(LedigCheck.IsChecked ?? false)
+                {
+                    l = db.Room.Where(r => !r.opptatt && r.roomType == romtypeCombo.SelectedIndex).ToList();
+                }
+                else
+                {
+                    l = db.Room.Where(r =>  r.roomType == romtypeCombo.SelectedIndex).ToList();
+                }
+            }
         }
     }
 }
