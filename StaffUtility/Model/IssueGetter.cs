@@ -23,8 +23,21 @@ namespace StaffUtility.Model
             client = new HttpClient();
             client.BaseAddress = apiUrl;
         }
-
         public ObservableCollection<Issue> LoadAll()
+        {
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            ObservableCollection<Issue> Issues = null;
+            HttpResponseMessage response = client.GetAsync("api/Issues").GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                Issues = response.Content.ReadAsAsync<ObservableCollection<Issue>>().GetAwaiter().GetResult();
+            }
+            return Issues;
+        }
+
+        public ObservableCollection<Issue> LoadUncompleted()
         {
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
