@@ -69,6 +69,8 @@ namespace StaffUtility
         private void Finish_PointerPressed(object sender, RoutedEventArgs e)
         {
             il.Remove(selectedIssue);
+            selectedIssue.status = CompletionStatus.completed;
+            ig.Update(selectedIssue);
             issue_list.DataContext = il;
         }
 
