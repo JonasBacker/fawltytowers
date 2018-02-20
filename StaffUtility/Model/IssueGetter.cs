@@ -37,7 +37,7 @@ namespace StaffUtility.Model
             return Issues;
         }
 
-        public ObservableCollection<Issue> LoadUncompleted()
+        public ObservableCollection<Issue> LoadUncompleted(ServiceClass sc)
         {
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -48,7 +48,7 @@ namespace StaffUtility.Model
             {
                 Issues = response.Content.ReadAsAsync<ObservableCollection<Issue>>().GetAwaiter().GetResult();
             }
-            Issues = new ObservableCollection<Issue> (Issues.Select(x=>x).Where(x => !x.status.Equals(CompletionStatus.completed)));
+            Issues = new ObservableCollection<Issue> (Issues.Select(x=>x).Where(x => !x.status.Equals(CompletionStatus.completed) && x.issueClass.Equals(sc)));
             return Issues;
         }
 
