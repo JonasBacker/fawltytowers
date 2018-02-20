@@ -61,13 +61,13 @@ namespace StaffUtility
 
             switch ((ServiceClass) value)
             {
-                case ServiceClass.cleaning:
+                case ServiceClass.Cleaning:
                     imagefile = "Assets/vacuum_cleaner.png";
                     break;
-                case ServiceClass.service:
+                case ServiceClass.Service:
                     imagefile = "Assets/food_drink.png";
                     break;
-                case ServiceClass.maintenance:
+                case ServiceClass.Maintenance:
                     imagefile = "Assets/tools.png";
                     break;
                 default:

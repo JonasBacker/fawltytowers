@@ -48,7 +48,7 @@ namespace StaffUtility.Model
             {
                 Issues = response.Content.ReadAsAsync<ObservableCollection<Issue>>().GetAwaiter().GetResult();
             }
-            Issues = new ObservableCollection<Issue> (Issues.Select(x=>x).Where(x => !x.status.Equals(CompletionStatus.completed) && x.issueClass.Equals(sc)));
+            Issues = new ObservableCollection<Issue> (Issues.Select(x=>x).Where(x => !x.status.Equals(CompletionStatus.completed) && x.issueType.Equals(sc)));
             return Issues;
         }
 

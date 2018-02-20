@@ -3,13 +3,13 @@
 namespace StaffUtility
 {
     public enum CompletionStatus { issued, inProgress, completed }
-    public enum ServiceClass { cleaning, service, maintenance }
+    public enum ServiceClass { Cleaning, Service, Maintenance }
 
     public class Issue
     {
      
         public int issueID { get; set; }
-        public ServiceClass issueClass { get; set; }
+        public ServiceClass issueType { get; set; }
         public string issueDescription { get; set; }
       
         public string note { get; set; }

@@ -29,25 +29,25 @@ namespace StaffUtility
 
         public string testString { get; set; } = "teststring";
         private Model.IssueGetter ig = new Model.IssueGetter();
-        public string serviceclass { get; set; } = "";
+        public ServiceClass serviceclass { get; set; }
         public StaffPage()
         {
-             this.InitializeComponent();
+            this.InitializeComponent();
 
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
-            var parameter = e.Parameter as String;
-            serviceclass = parameter;
+
+            var parameter = e.Parameter;
+            serviceclass = (ServiceClass)parameter;
 
             il = new ObservableCollection<Issue>();
             selectedIssue = null;
 
-            page_header.Text = serviceclass;
-            
-            
-            il = ig.LoadUncompleted();
+            page_header.Text = serviceclass.ToString();
+
+
+            il = ig.LoadUncompleted(serviceclass);
 
 
             issue_list.DataContext = il;
@@ -71,25 +71,28 @@ namespace StaffUtility
             il.Remove(selectedIssue);
             selectedIssue.status = CompletionStatus.completed;
             ig.Update(selectedIssue);
-            il = ig.LoadUncompleted();
+            //il = ig.LoadUncompleted(serviceclass);
             issue_list.DataContext = il;
         }
 
         private void Progress_PointerPressed(object sender, RoutedEventArgs e)
         {
             Image img = (Image)sender;
-            int index = il.IndexOf(selectedIssue);
-            if (il[index].status == CompletionStatus.issued)
+            if (selectedIssue.status == CompletionStatus.issued)
             {
                 img.Opacity = 1;
-                il[index].status = CompletionStatus.inProgress;
+                selectedIssue.status = CompletionStatus.inProgress;
+                ig.Update(selectedIssue);
             }
             else
             {
                 img.Opacity = 0.3;
-                il[index].status = CompletionStatus.issued;
+                selectedIssue.status = CompletionStatus.issued;
+                ig.Update(selectedIssue);
             }
+            //il = ig.LoadUncompleted(serviceclass);
             issue_list.DataContext = il;
+
         }
 
         private void issue_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -111,8 +114,8 @@ namespace StaffUtility
                 ListViewItem lvi = (sender as ListView).ContainerFromItem(item) as ListViewItem;
                 lvi.ContentTemplate = (DataTemplate)this.Resources["defaultState"];
             }
-                
-            
+
+
         }
 
     }

@@ -30,18 +30,18 @@ namespace StaffUtility
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StaffPage), "Service");
+            this.Frame.Navigate(typeof(StaffPage), ServiceClass.Service);
         }
 
         private void go_cleaning_Click(object sender, RoutedEventArgs e)
         {
             
-            this.Frame.Navigate(typeof(StaffPage), "Cleaning");
+            this.Frame.Navigate(typeof(StaffPage), ServiceClass.Cleaning);
         }
 
         private void go_maintenance_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StaffPage), "Maintenance");
+            this.Frame.Navigate(typeof(StaffPage), ServiceClass.Maintenance);
         }
     }
 }
