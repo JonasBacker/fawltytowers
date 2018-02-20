@@ -47,7 +47,7 @@ namespace StaffUtility
             page_header.Text = serviceclass;
             
             
-            il = ig.LoadAll();
+            il = ig.LoadUncompleted();
 
 
             issue_list.DataContext = il;
