@@ -17,7 +17,7 @@
         <TextBox Name="textbox1" HorizontalAlignment="Left" Height="23" Margin="182,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Calendar Name="FirstCal" HorizontalAlignment="Left" Margin="182,140,0,0" VerticalAlignment="Top" Height="167" Width="170"/>
         <Calendar Name="SecondCal" HorizontalAlignment="Left" Margin="182,378,0,0" VerticalAlignment="Top"/>
-        <Button Content="Reserver" HorizontalAlignment="Left" Margin="25,565,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Name="reserverKnapp" Content="Reserver" HorizontalAlignment="Left" Margin="25,565,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
     </Grid>
 </Window>

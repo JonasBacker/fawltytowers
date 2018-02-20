@@ -21,11 +21,14 @@ namespace DesktopApplication
     /// </summary>
     public partial class Window1 : Window
     {
+        private Room room;
         public Window1(dat154_18_2Entities db , Room room)
         {
             InitializeComponent();
-            romnr.Content = room.roomID;
-
+            this.room = room;
+            
+            romnr.Content = this.room.roomID;
+            
 
         }
 
@@ -41,12 +44,15 @@ namespace DesktopApplication
 
                 DateTime from = (DateTime)FirstCal.SelectedDate;
                 DateTime to = (DateTime)SecondCal.SelectedDate;
-                Booking book = new Booking { checkinDate = from, checkoutDate = to, customerID = kunde.customerID, roomtype = Int32.Parse((string)romnr.Content)};
+                Booking book = new Booking { checkinDate = from, checkoutDate = to, customerID = kunde.customerID, roomtype = (int)room.roomType};
                 db.Booking.Add(book);
                 db.SaveChanges();
                 db.Booking.Load();
-               
-
+                MessageBoxResult m = MessageBox.Show("Bestilling fullført. \n KundeNr "+ kunde.customerID + "\n Passord " + kunde.passord + "\n BookingID " + book.bookingID +" \n ", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                if(m == MessageBoxResult.OK)
+                {
+                    this.Close();
+                }
             }
 
 

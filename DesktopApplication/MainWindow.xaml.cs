@@ -22,13 +22,18 @@ namespace DesktopApplication
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
+        
+
     public partial class MainWindow : Window
     {
+        dat154_18_2Entities db;
         public MainWindow()
         {
            
             InitializeComponent();
-
+            db = new dat154_18_2Entities();
             using(var db = new dat154_18_2Entities())
             {
                 var room = new Room { roomType = 1, ledigTil = new DateTime(2018,07,15) , vasket = false, opptatt = false };
@@ -38,62 +43,48 @@ namespace DesktopApplication
                 db.Room.Load();
                 romList.DataContext = db.Room.Local;
 
-               
-                
-                //RoomGrid.ItemsSource = db.Room.Local;
             }
-            //ObservableCollection<Room> Rooms = new ObservableCollection<Room>();
-            //Rooms.Add(new Room(RoomType.dobbeltrom,true,false));
-            //Rooms.Add(new Room(RoomType.enkeltrom, false, false));
-            //Rooms.Add(new Room(RoomType.enkeltrom, true, true));
-            //Rooms.Add(new Room(RoomType.familierom, true, false));
-           // RoomGrid.ItemsSource = Rooms;
-           
-            
-            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (romList.SelectedItem != null)
             {
-                using (var db = new dat154_18_2Entities())
+
                 {
                     Room selected = (Room)romList.SelectedItem;
                     Room rom = db.Room.Where(r => r.roomID == selected.roomID).First();
-                    if (rom.vasket)
-                        rom.vasket = false;
+
+                    if (((Button)sender).Name.Equals("VasketButton"))
+                    {
+                        if (rom.vasket)
+                            rom.vasket = false;
+                        else
+                            rom.vasket = true;
+                    }
                     else
-                        rom.vasket = true;
+                    {
+                        if (rom.opptatt)
+                            rom.opptatt = false;
+                        else
+                            rom.opptatt = true;
+                    }
 
                     db.SaveChanges();
 
                     db.Room.Load();
-                    romList.DataContext = db.Room.Local;
-                }
-            }
-        }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            if (romList.SelectedItem != null)
-            {
-                using (var db = new dat154_18_2Entities())
-                {
-                    Room selected = (Room)romList.SelectedItem;
-                    Room rom = db.Room.Where(r => r.roomID == selected.roomID).First();
-                    if (rom.opptatt)
-                        rom.opptatt = false;
+                    if (LedigCheck.IsChecked ?? false)
+                        LedigCheck_Checked(null, null);
+                    else if (VasketCheck.IsChecked ?? false)
+                        VasketCheck_Checked(null, null);
                     else
-                        rom.opptatt = true;
-
-                    db.SaveChanges();
-
-                    db.Room.Load();
-                    romList.DataContext = db.Room.Local;
+                        romList.DataContext = db.Room.ToList();
                 }
             }
         }
+
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -107,6 +98,7 @@ namespace DesktopApplication
                 {
                     Room selected = (Room)romList.SelectedItem;
                     Window w = new Window1(db, selected);
+                    w.Activate();
                     w.ShowDialog();
                 }
 
@@ -119,7 +111,48 @@ namespace DesktopApplication
 
         }
 
+        private void VasketCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            List<Room> l;
+            if (LedigCheck.IsChecked ?? false)
+                l = db.Room.Where(r => r.vasket && !r.opptatt).ToList();
+            else
+                l = db.Room.Where(r => r.vasket).ToList();
+            romList.DataContext = l;
+        }
 
+        private void VasketCheck_Unchecked(object sender, RoutedEventArgs e)
+        {
+            List<Room> l;
+            if (LedigCheck.IsChecked ?? false)
+                l = db.Room.Where(r => !r.opptatt).ToList();
 
+            else
+                l = db.Room.ToList();
+            
+            romList.DataContext = l;
+        }
+
+        private void LedigCheck_Unchecked(object sender, RoutedEventArgs e)
+        {
+            List<Room> l;
+            if (VasketCheck.IsChecked ?? false)
+                l = db.Room.Where(r => r.vasket).ToList();
+
+            else
+                l = db.Room.ToList();
+
+            romList.DataContext = l;
+        }
+
+        private void LedigCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            List<Room> l;
+            if (VasketCheck.IsChecked ?? false)
+                l = db.Room.Where(r => r.vasket && !r.opptatt).ToList();
+            else
+                l = db.Room.Where(r => !r.opptatt).ToList();
+            romList.DataContext = l;
+        }
     }
 }
