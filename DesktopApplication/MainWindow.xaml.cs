@@ -41,8 +41,8 @@ namespace DesktopApplication
 
             db.Room.Load();
             romList.DataContext = romtypeCombo.DataContext = db.Room.Local;
-           
-            
+            romtypeCombo.SelectedIndex = 0;
+
 
         }
 
@@ -75,13 +75,8 @@ namespace DesktopApplication
                     db.Room.Load();
 
 
-
-                    if (LedigCheck.IsChecked ?? false)
-                        LedigCheck_Checked(null, null);
-                    else if (VasketCheck.IsChecked ?? false)
-                        VasketCheck_Checked(null, null);
-                    else
-                        romList.DataContext = db.Room.ToList();
+                   
+                    romtypeCombo_SelectionChanged(null, null);
                 }
             }
         }
@@ -109,14 +104,20 @@ namespace DesktopApplication
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-
+            ReservationWindow w = new ReservationWindow(db);
+            w.Activate();
+            w.ShowDialog();
         }
 
         private void VasketCheck_Checked(object sender, RoutedEventArgs e)
         {
             List<Room> l;
-            if (LedigCheck.IsChecked ?? false)
+            if ((LedigCheck.IsChecked ?? false) && romtypeCombo.SelectedIndex!=0)
+                l = db.Room.Where(r => r.vasket && !r.opptatt && r.roomType==romtypeCombo.SelectedIndex).ToList();
+            else if (LedigCheck.IsChecked ?? false)
                 l = db.Room.Where(r => r.vasket && !r.opptatt).ToList();
+            else if (romtypeCombo.SelectedIndex != 0)
+                l = db.Room.Where(r => r.vasket && r.roomType == romtypeCombo.SelectedIndex).ToList();
             else
                 l = db.Room.Where(r => r.vasket).ToList();
             romList.DataContext = l;
@@ -125,9 +126,12 @@ namespace DesktopApplication
         private void VasketCheck_Unchecked(object sender, RoutedEventArgs e)
         {
             List<Room> l;
-            if (LedigCheck.IsChecked ?? false)
+            if((LedigCheck.IsChecked ?? false) && romtypeCombo.SelectedIndex != 0)
+                l = db.Room.Where(r => !r.opptatt && r.roomType == romtypeCombo.SelectedIndex).ToList();
+            else if (LedigCheck.IsChecked ?? false)
                 l = db.Room.Where(r => !r.opptatt).ToList();
-
+            else if (romtypeCombo.SelectedIndex != 0)
+                l = db.Room.Where(r => r.roomType == romtypeCombo.SelectedIndex).ToList();
             else
                 l = db.Room.ToList();
             
@@ -137,9 +141,12 @@ namespace DesktopApplication
         private void LedigCheck_Unchecked(object sender, RoutedEventArgs e)
         {
             List<Room> l;
-            if (VasketCheck.IsChecked ?? false)
+            if ((VasketCheck.IsChecked ?? false) && romtypeCombo.SelectedIndex != 0)
+                l = db.Room.Where(r => r.vasket && r.roomType == romtypeCombo.SelectedIndex).ToList();
+            else if (VasketCheck.IsChecked ?? false)
                 l = db.Room.Where(r => r.vasket).ToList();
-
+            else if (romtypeCombo.SelectedIndex != 0)
+                l = db.Room.Where(r => r.roomType == romtypeCombo.SelectedIndex).ToList();
             else
                 l = db.Room.ToList();
 
@@ -149,8 +156,12 @@ namespace DesktopApplication
         private void LedigCheck_Checked(object sender, RoutedEventArgs e)
         {
             List<Room> l;
-            if (VasketCheck.IsChecked ?? false)
+            if ((VasketCheck.IsChecked ?? false) && romtypeCombo.SelectedIndex != 0)
+                l = db.Room.Where(r => r.vasket && !r.opptatt && r.roomType == romtypeCombo.SelectedIndex).ToList();
+            else if (VasketCheck.IsChecked ?? false)
                 l = db.Room.Where(r => r.vasket && !r.opptatt).ToList();
+            else if (romtypeCombo.SelectedIndex != 0)
+                l = db.Room.Where(r => !r.opptatt && r.roomType == romtypeCombo.SelectedIndex).ToList();
             else
                 l = db.Room.Where(r => !r.opptatt).ToList();
             romList.DataContext = l;
@@ -183,7 +194,9 @@ namespace DesktopApplication
                 else
                 {
                     l = db.Room.Where(r =>  r.roomType == romtypeCombo.SelectedIndex).ToList();
+                    
                 }
+                romList.DataContext = l;
             }
         }
     }
