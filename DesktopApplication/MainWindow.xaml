@@ -12,7 +12,6 @@
                 <GridView>
                     <GridViewColumn Width="100" Header="Rom nr" DisplayMemberBinding="{Binding Path=roomID}" />
                     <GridViewColumn Width="100" Header="Rom Type" DisplayMemberBinding="{Binding Path=roomType}"/>
-                    <GridViewColumn Width="100" Header="Ledig Til" DisplayMemberBinding="{Binding Path=ledigTil}"/>
                     <GridViewColumn Width="100" Header="Vasket">
 
                         <GridViewColumn.CellTemplate>
@@ -43,6 +42,7 @@
         </ComboBox>
         <CheckBox Name="VasketCheck"  IsChecked="False" Content="Vasket" HorizontalAlignment="Left" Margin="556,15,0,0" VerticalAlignment="Top" Checked="VasketCheck_Checked" Unchecked="VasketCheck_Unchecked"/>
         <CheckBox Name="LedigCheck" IsChecked="False" Content="Ledig" Margin="556,37,0,0" HorizontalAlignment="Left" Width="126" Height="40" VerticalAlignment="Top" Unchecked="LedigCheck_Unchecked" Checked="LedigCheck_Checked"/>
+        <Button Content="Opprett Sak" HorizontalAlignment="Left" Margin="641,27,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
     </Grid>
 
 

@@ -16,14 +16,16 @@
                     <GridViewColumn Width="100" Header="Romtype" DisplayMemberBinding="{Binding Path=roomtype}"/>
                     <GridViewColumn Width="150" Header="Innsjekk" DisplayMemberBinding="{Binding Path=checkinDate}"/>
                     <GridViewColumn Width="150" Header="Utsjekk" DisplayMemberBinding="{Binding Path=checkoutDate}"/>
+                    <GridViewColumn Width="100" Header="RomID" DisplayMemberBinding="{Binding Path=Room1.roomID}"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <Button Name="slettbutton" Content="Slett" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Width="75" Click="slettbutton_Click" />
         <Button Name="endrebutton" Content="Endre" HorizontalAlignment="Left" Margin="97,27,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.439,-0.021" Click="endrebutton_Click" />
-        <TextBox Text="Reservasjonsnr" HorizontalAlignment="Left" Height="23" Margin="564,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="Searchbar" HorizontalAlignment="Left" Height="23" Margin="564,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
         <Label Content="Søk:" HorizontalAlignment="Left" Margin="521,21,0,0" VerticalAlignment="Top"/>
-        <Button Content="Sjekk inn" HorizontalAlignment="Left" Margin="187,27,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Sjekk inn" HorizontalAlignment="Left" Margin="187,27,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Sjekk Ut" HorizontalAlignment="Left" Margin="280,27,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
     </Grid>
 
 

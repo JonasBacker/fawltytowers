@@ -34,9 +34,11 @@ namespace DesktopApplication
            
             InitializeComponent();
             db = new dat154_18_2Entities();
+            delegatClass.delegat += updateView;
 
-            var room = new Room { roomType = 2, ledigTil = new DateTime(2018, 07, 15), vasket = false, opptatt = false };
-            db.Room.Add(room);
+            //var room1 = new Room { roomType = 1, vasket = false, opptatt = false };
+            //db.Room.Add(room1);
+           
             db.SaveChanges();
 
             db.Room.Load();
@@ -198,6 +200,23 @@ namespace DesktopApplication
                 }
                 romList.DataContext = l;
             }
+        }
+        private void updateView()
+        {
+            db.Room.Load();
+            romList.DataContext = db.Room.ToList();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (romList.SelectedItem != null)
+            {
+                Window w = new IssueWindow(db, (Room)romList.SelectedItem);
+                w.Activate();
+                w.ShowDialog();
+            }
+
+
         }
     }
 }

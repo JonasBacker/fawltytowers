@@ -69,6 +69,9 @@
     <Compile Include="EditResWindow.xaml.cs">
       <DependentUpon>EditResWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IssueWindow.xaml.cs">
+      <DependentUpon>IssueWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReservationWindow.xaml.cs">
       <DependentUpon>ReservationWindow.xaml</DependentUpon>
     </Compile>
@@ -76,6 +79,10 @@
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Page Include="EditResWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IssueWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

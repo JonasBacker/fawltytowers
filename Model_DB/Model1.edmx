@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dat154_18_2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dat154_18_2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Booking">
           <Key>
             <PropertyRef Name="bookingID" />
@@ -14,6 +14,7 @@
           <Property Name="roomtype" Type="int" Nullable="false" />
           <Property Name="checkinDate" Type="datetime" Nullable="false" />
           <Property Name="checkoutDate" Type="datetime" Nullable="false" />
+          <Property Name="room" Type="int" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -58,6 +59,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Booking__room__15502E78">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Issue__room__145C0A3F">
           <End Role="Room" Type="Self.Room" Multiplicity="1" />
           <End Role="Issue" Type="Self.Issue" Multiplicity="*" />
@@ -79,13 +92,16 @@
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Booking" EntitySet="Booking" />
           </AssociationSet>
+          <AssociationSet Name="FK__Booking__room__15502E78" Association="Self.FK__Booking__room__15502E78">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
           <AssociationSet Name="FK__Issue__room__145C0A3F" Association="Self.FK__Issue__room__145C0A3F">
             <End Role="Room" EntitySet="Room" />
             <End Role="Issue" EntitySet="Issue" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dat154_18_2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -99,6 +115,8 @@
           <Property Name="checkinDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="checkoutDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Booking__custome__108B795B" FromRole="Booking" ToRole="Customer" />
+          <Property Name="room" Type="Int32" />
+          <NavigationProperty Name="Room1" Relationship="dat154_18_2Model.FK__Booking__room__15502E78" FromRole="Booking" ToRole="Room" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -132,6 +150,7 @@
           <Property Name="opptatt" Type="Boolean" Nullable="false" />
           <Property Name="ledigTil" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Issue" Relationship="Self.FK__Issue__room__145C0A3F" FromRole="Room" ToRole="Issue" />
+          <NavigationProperty Name="Booking" Relationship="dat154_18_2Model.FK__Booking__room__15502E78" FromRole="Room" ToRole="Booking" />
         </EntityType>
         <Association Name="FK__Booking__custome__108B795B">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
@@ -170,7 +189,23 @@
             <End Role="Room" EntitySet="Room" />
             <End Role="Issue" EntitySet="Issue" />
           </AssociationSet>
+          <AssociationSet Name="FK__Booking__room__15502E78" Association="dat154_18_2Model.FK__Booking__room__15502E78">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__Booking__room__15502E78">
+          <End Type="dat154_18_2Model.Room" Role="Room" Multiplicity="0..1" />
+          <End Type="dat154_18_2Model.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -180,6 +215,7 @@
           <EntitySetMapping Name="Booking">
             <EntityTypeMapping TypeName="dat154_18_2Model.Booking">
               <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="room" ColumnName="room" />
                 <ScalarProperty Name="bookingID" ColumnName="bookingID" />
                 <ScalarProperty Name="customerID" ColumnName="customerID" />
                 <ScalarProperty Name="roomtype" ColumnName="roomtype" />

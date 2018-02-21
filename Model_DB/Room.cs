@@ -18,6 +18,7 @@ namespace Model_DB
         public Room()
         {
             this.Issue = new HashSet<Issue>();
+            this.Booking = new HashSet<Booking>();
         }
     
         public int roomID { get; set; }
@@ -28,5 +29,7 @@ namespace Model_DB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Issue> Issue { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Booking> Booking { get; set; }
     }
 }
