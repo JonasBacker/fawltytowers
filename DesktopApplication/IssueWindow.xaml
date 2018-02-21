@@ -1,0 +1,25 @@
+﻿<Window x:Class="DesktopApplication.IssueWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopApplication"
+        mc:Ignorable="d"
+        Title="IssueWindow" Height="402.975" Width="419.328">
+    <Grid Margin="0,0,0,3">
+        <Label Content="RomNr" HorizontalAlignment="Left" Margin="52,21,0,0" VerticalAlignment="Top"/>
+        <Label Name="Romnr" Content="" HorizontalAlignment="Left" Margin="238,21,0,0" VerticalAlignment="Top"/>
+        <Label Content="Type Sak" HorizontalAlignment="Left" Margin="52,64,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="ComboSak" HorizontalAlignment="Left" Margin="179,68,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem>Vasking</ComboBoxItem>
+            <ComboBoxItem>Roomservice</ComboBoxItem>
+            <ComboBoxItem>Vedlikehold</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Beskrivelse" HorizontalAlignment="Left" Margin="52,107,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="Beskrivelse" HorizontalAlignment="Left" Height="68" Margin="52,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="321"/>
+        <Label Content="Tilleggsinformasjon" HorizontalAlignment="Left" Margin="52,211,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="Tilleggsinformasjon" HorizontalAlignment="Left" Height="68" Margin="52,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="321"/>
+        <Button Name="OpprettSak" Content="Opprett Sak" HorizontalAlignment="Left" Margin="52,328,0,0" VerticalAlignment="Top" Width="321" Height="27" Background="#FFFF6767" Click="OpprettSak_Click"/>
+
+    </Grid>
+</Window>

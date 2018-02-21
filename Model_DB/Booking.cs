@@ -19,7 +19,9 @@ namespace Model_DB
         public int roomtype { get; set; }
         public System.DateTime checkinDate { get; set; }
         public System.DateTime checkoutDate { get; set; }
+        public Nullable<int> room { get; set; }
     
         public virtual Customer Customer { get; set; }
+        public virtual Room Room1 { get; set; }
     }
 }

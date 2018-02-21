@@ -206,5 +206,17 @@ namespace DesktopApplication
             db.Room.Load();
             romList.DataContext = db.Room.ToList();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (romList.SelectedItem != null)
+            {
+                Window w = new IssueWindow(db, (Room)romList.SelectedItem);
+                w.Activate();
+                w.ShowDialog();
+            }
+
+
+        }
     }
 }

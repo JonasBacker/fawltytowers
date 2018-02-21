@@ -81,6 +81,7 @@ namespace DesktopApplication
             if (l.Count > 0) { 
                 rom = l.First();
                 rom.opptatt = true;
+                book.room = rom.roomID;
                 db.SaveChanges();
                 delegatClass.delegat.Invoke();
                 MessageBoxResult m = MessageBox.Show("Rom nr " + rom.roomID +" er ledig","Rom Ledig", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -100,6 +101,20 @@ namespace DesktopApplication
 
 
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Booking book = (Booking)resList.SelectedItem;
+            if (book.Room1 != null)
+            {
+                book.Room1.opptatt = false;
+                book.Room1.vasket = false;
+                db.Issue.Add(new Issue { room = book.Room1.roomID, issueType = 1, issueDescription = "Vask rommet plz", note = "Pretty plz?", status = 0, timeIssued = DateTime.Now});
+                db.Booking.Remove(book);
+                db.SaveChanges();
+                delegatClass.delegat.Invoke();
+            }
         }
     }
 }
