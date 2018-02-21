@@ -89,26 +89,6 @@ namespace StaffUtility.Model
 
 
 
-        //public void LoadData()
-        //{
-        //    if (!this.isDataLoaded)
-
-        //    {
-        //        using (var client = new HttpClient())
-        //        {
-        //            var response = "";
-        //            Task task = Task.Run(async () =>
-        //            {
-        //                response = await client.GetStringAsync(apiUrl);
-
-        //            });
-        //            task.Wait(); // Wait
-        //            Issues = JsonConvert.DeserializeObject<ObservableCollection<Issue>>(response);
-        //        }
-        //    }
-        //}
-
-
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
