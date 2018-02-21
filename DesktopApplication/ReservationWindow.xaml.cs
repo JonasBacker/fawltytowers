@@ -74,12 +74,15 @@ namespace DesktopApplication
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            List<Room> l;
             Room rom;
             Booking book = (Booking)resList.SelectedItem;
-            rom = db.Room.Where(r => !r.opptatt && r.roomType == book.roomtype).First();
-            if (rom != null)
-            {
+            l = db.Room.Where(r => !r.opptatt && r.roomType == book.roomtype).ToList();
+            if (l.Count > 0) { 
+                rom = l.First();
                 rom.opptatt = true;
+                db.SaveChanges();
+                delegatClass.delegat.Invoke();
                 MessageBoxResult m = MessageBox.Show("Rom nr " + rom.roomID +" er ledig","Rom Ledig", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 if (m == MessageBoxResult.OK)
                 {

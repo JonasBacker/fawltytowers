@@ -34,9 +34,11 @@ namespace DesktopApplication
            
             InitializeComponent();
             db = new dat154_18_2Entities();
+            delegatClass.delegat += updateView;
 
-            var room = new Room { roomType = 2, vasket = false, opptatt = false };
-            db.Room.Add(room);
+            //var room1 = new Room { roomType = 1, vasket = false, opptatt = false };
+            //db.Room.Add(room1);
+           
             db.SaveChanges();
 
             db.Room.Load();
@@ -198,6 +200,11 @@ namespace DesktopApplication
                 }
                 romList.DataContext = l;
             }
+        }
+        private void updateView()
+        {
+            db.Room.Load();
+            romList.DataContext = db.Room.ToList();
         }
     }
 }
