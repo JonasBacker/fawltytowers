@@ -116,5 +116,17 @@ namespace DesktopApplication
                 delegatClass.delegat.Invoke();
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Searchbar.Text.Equals(""))
+            {
+                resList.DataContext = db.Booking.ToList();
+            }
+            else
+            {
+                resList.DataContext = db.Booking.Where(b => (b.room.ToString()).Contains(Searchbar.Text) || (b.bookingID.ToString()).Contains(Searchbar.Text) || (b.Customer.navn).Contains(Searchbar.Text)).ToList();
+            }
+        }
     }
 }
