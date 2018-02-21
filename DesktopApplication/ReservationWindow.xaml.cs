@@ -71,5 +71,32 @@ namespace DesktopApplication
             db.Booking.Load();
             resList.DataContext = db.Booking.ToList();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Room rom;
+            Booking book = (Booking)resList.SelectedItem;
+            rom = db.Room.Where(r => !r.opptatt && r.roomType == book.roomtype).First();
+            if (rom != null)
+            {
+                rom.opptatt = true;
+                MessageBoxResult m = MessageBox.Show("Rom nr " + rom.roomID +" er ledig","Rom Ledig", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                if (m == MessageBoxResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBoxResult m = MessageBox.Show("Ingen rom med den beskrivelsen ledig!","404 not found", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                if (m == MessageBoxResult.OK)
+                {
+                    this.Close();
+                }
+            }
+
+
+
+        }
     }
 }
