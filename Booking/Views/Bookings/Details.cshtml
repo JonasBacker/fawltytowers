@@ -1,0 +1,59 @@
+﻿@model Model_DB.Booking
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Booking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.roomtype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.roomtype)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkinDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkinDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.checkoutDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.checkoutDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.navn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.navn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room1.roomID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room1.roomID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.bookingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

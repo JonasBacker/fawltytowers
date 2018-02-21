@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Model_DB.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.navn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.passord)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.navn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.passord)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.customerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.customerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.customerID })
+        </td>
+    </tr>
+}
+
+</table>

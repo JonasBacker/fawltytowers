@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 
-namespace Booking
+namespace WebBooking
 {
     public static class WebApiConfig
     {

@@ -5,4 +5,8 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<input id="name" type="text" value="@ViewBag.Name" /><!--<input id="pass" type="text" />--><input id="submit_login" formaction="YourAccount" type="button" value="Login" />
+<form name="try_login" action="/Home/YourAccount">
+    <input id="name" type="text" name="name" />
+    <input id="pass" type="text" name="pass"/>
+    <input id="submit_login" type="submit" value="Login" />
+</form>

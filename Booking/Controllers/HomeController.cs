@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Util;
 
 
-namespace Booking.Controllers
+namespace WebBooking.Controllers
 {
     public class HomeController : Controller
     {
@@ -41,13 +41,21 @@ namespace Booking.Controllers
 
             return View();
         }
-        public ActionResult YourAccount(string name)
+        public ActionResult YourAccount(string name, string pass)
         {
             ViewBag.Name = name;
+            ViewBag.Pass = pass;
             ViewBag.Message = "Your account.";
             ViewBag.Title = "Your account ";
 
             return View();
         }
+        //public ActionResult YourAccount()
+        //{
+        //    ViewBag.Message = "Your account.";
+        //    ViewBag.Title = "Your account ";
+
+        //    return View();
+        //}
     }
 }

@@ -11,17 +11,19 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Model_DB;
 
-namespace Booking.Controllers
+namespace WebBooking.Controllers
 {
     public class IssuesController : ApiController
     {
         private dat154_18_2Entities db = new dat154_18_2Entities();
 
         // GET: api/Issues
-        public ObservableCollection<Issue> GetIssue()
+        public IQueryable<Issue>  GetIssue()
         {
-            db.Issue.Load();
-            return db.Issue.Local;
+            //ObservableCollection < Issue >
+            //db.Issue.Load();
+            //return db.Issue.Local;
+            return db.Issue;
         }
 
         // GET: api/Issues/5

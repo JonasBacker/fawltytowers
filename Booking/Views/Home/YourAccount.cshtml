@@ -5,6 +5,13 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 <div>
-    <p>Show reservations here</p>
-    
+    @if (ViewBag.Name != "")
+    {
+    <p>Welcome @ViewBag.Name</p>
+    <p>Your password is @ViewBag.Pass</p>
+    }
+    else
+    {
+        <p>Please <a href="/Home/Login">  Log in </a></p>
+    }
 </div>
