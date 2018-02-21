@@ -70,6 +70,7 @@ namespace StaffUtility
         {
             il.Remove(selectedIssue);
             selectedIssue.status = CompletionStatus.completed;
+            selectedIssue.timeCompleted = DateTime.Now;
             ig.Update(selectedIssue);
             //il = ig.LoadUncompleted(serviceclass);
             issue_list.DataContext = il;
