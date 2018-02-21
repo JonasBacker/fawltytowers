@@ -35,7 +35,7 @@ namespace DesktopApplication
             InitializeComponent();
             db = new dat154_18_2Entities();
 
-            var room = new Room { roomType = 2, ledigTil = new DateTime(2018, 07, 15), vasket = false, opptatt = false };
+            var room = new Room { roomType = 2, vasket = false, opptatt = false };
             db.Room.Add(room);
             db.SaveChanges();
 

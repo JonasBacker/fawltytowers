@@ -12,7 +12,6 @@
                 <GridView>
                     <GridViewColumn Width="100" Header="Rom nr" DisplayMemberBinding="{Binding Path=roomID}" />
                     <GridViewColumn Width="100" Header="Rom Type" DisplayMemberBinding="{Binding Path=roomType}"/>
-                    <GridViewColumn Width="100" Header="Ledig Til" DisplayMemberBinding="{Binding Path=ledigTil}"/>
                     <GridViewColumn Width="100" Header="Vasket">
 
                         <GridViewColumn.CellTemplate>
