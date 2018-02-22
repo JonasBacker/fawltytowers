@@ -1,14 +1,39 @@
-﻿@{
+﻿@model Model_DB.Customer
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Your Account";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 <div>
-    @if (ViewBag.Name != "")
+    @if (Model != null)
     {
-    <p>Welcome @ViewBag.Name</p>
-    <p>Your password is @ViewBag.Pass</p>
+        <p>Welcome 
+        @Html.DisplayFor(model => model.navn)
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking)
+                </th>
+            </tr>
+            @foreach (var item in Model.Booking)
+            {
+                <tr>
+                    @Html.DisplayForModel()
+                </tr>
+            <tr>
+                @Html.DisplayFor(x => item.checkinDate)
+            </tr>
+            <tr>
+                @Html.DisplayFor(x => item.checkoutDate)
+            </tr>
+            <tr>
+                @Html.DisplayFor(x => item.roomtype)
+            </tr>
+                }
+
+        </table>
     }
     else
     {

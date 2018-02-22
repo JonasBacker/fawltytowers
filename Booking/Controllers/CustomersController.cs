@@ -35,6 +35,7 @@ namespace WebBooking.Controllers
             return View(customer);
         }
 
+
         // GET: Customers/Create
         public ActionResult Create()
         {
@@ -52,7 +53,7 @@ namespace WebBooking.Controllers
             {
                 db.Customer.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("YourAccount","Home",customer);
             }
 
             return View(customer);
@@ -114,6 +115,26 @@ namespace WebBooking.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // get: Customers/Login/5
+        [HttpPost,ActionName("Login")]
+        public ActionResult Login(int? customerId)
+        {
+
+            if (customerId == null)
+            {
+                return RedirectToAction("Login", "Home", new { customerId = customerId, error = "Type in your Customer ID" });
+            }
+            Customer customer = db.Customer.Find(customerId);
+
+            if (customer == null)
+            {
+                return RedirectToAction("Login", "Home", new { customerId = customerId, error = "Did not find user" });
+            }
+            customer.Booking = db.Booking.Select(booking => booking).Where(c => c.customerID == customer.customerID).ToList();
+            return RedirectToAction("YourAccount","Home", customer);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

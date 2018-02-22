@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Util;
+using Model_DB;
 
 
 namespace WebBooking.Controllers
@@ -28,12 +30,14 @@ namespace WebBooking.Controllers
 
             return View();
         }
-        public ActionResult Login(string name)
+        public ActionResult Login(int? id, string error)
         {
-            ViewBag.Name = name;
+            ViewBag.Error = error;
             ViewBag.Message = "The login page";
-
-            return View();
+            if (id == null)
+                return View();
+            else
+                return View(id);
         }
         public ActionResult Signup()
         {
@@ -41,21 +45,12 @@ namespace WebBooking.Controllers
 
             return View();
         }
-        public ActionResult YourAccount(string name, string pass)
+        public ActionResult YourAccount(Customer customer)
         {
-            ViewBag.Name = name;
-            ViewBag.Pass = pass;
             ViewBag.Message = "Your account.";
             ViewBag.Title = "Your account ";
 
-            return View();
+            return View(customer);
         }
-        //public ActionResult YourAccount()
-        //{
-        //    ViewBag.Message = "Your account.";
-        //    ViewBag.Title = "Your account ";
-
-        //    return View();
-        //}
     }
 }

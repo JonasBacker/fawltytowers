@@ -30,6 +30,9 @@
             @Html.DisplayFor(modelItem => item.passord)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.customerID)
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.customerID }) |
             @Html.ActionLink("Details", "Details", new { id=item.customerID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.customerID })

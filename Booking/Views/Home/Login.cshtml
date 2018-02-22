@@ -1,12 +1,41 @@
-﻿@{
+﻿@model Model_DB.Customer
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Login";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<form name="try_login" action="/Home/YourAccount">
-    <input id="name" type="text" name="name" />
-    <input id="pass" type="text" name="pass"/>
-    <input id="submit_login" type="submit" value="Login" />
-</form>
+@using (Html.BeginForm("Login", "Customers"))
+{
+
+<div class="form-horizontal">
+    <h4>Customer</h4>
+    <hr />
+    @if (ViewBag.Error != "")
+    {
+        <p>@ViewBag.Error</p>
+    }
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.customerID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.customerID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.customerID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to Home", "Index", "Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
