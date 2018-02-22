@@ -26,16 +26,6 @@ namespace StaffUtility
         {
 
         }
-
-        public class DefaultStateIssue: Issue
-        {
-
-        }
-
-        public class SelectedStateIssue : Issue
-        {
-
-        }
     }
 }
 

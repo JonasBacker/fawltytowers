@@ -97,7 +97,6 @@
     </Compile>
     <Compile Include="Model\Issue.cs" />
     <Compile Include="Model\IssueGetter.cs" />
-    <Compile Include="MyDataTemplateSelector.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="StaffPage.xaml.cs">
       <DependentUpon>StaffPage.xaml</DependentUpon>
