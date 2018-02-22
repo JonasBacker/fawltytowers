@@ -56,7 +56,7 @@ namespace WebBooking.Controllers
             {
                 db.Booking.Add(booking);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("YourAccount","Home");
             }
 
             ViewBag.customerID = new SelectList(db.Customer, "customerID", "navn", booking.customerID);
