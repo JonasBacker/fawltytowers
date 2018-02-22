@@ -29,7 +29,7 @@
                 <TextBlock Text="{x:Bind issueDescription}" FontSize="18" Grid.Column="1" TextWrapping="WrapWholeWords" VerticalAlignment="Center" />
 
                 <Image Source="{Binding issueType, Converter={StaticResource scToFp}}" Grid.Column="2" Height="40" Width="40" Opacity="1"
-                               Visibility="{Binding Status, Converter={StaticResource stToVis}}" HorizontalAlignment="Right"/>
+                               Visibility="{Binding status, Converter={StaticResource stToVis}}" HorizontalAlignment="Right"/>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="selectedState" x:DataType="local:Issue">
@@ -44,7 +44,7 @@
                 <TextBlock Text="{x:Bind issueDescription}" FontSize="18" Grid.Column="1" TextWrapping="WrapWholeWords" VerticalAlignment="Center" />
 
                 <Image Source="{Binding issueType, Converter={StaticResource scToFp}}" Grid.Column="2" Height="40" Width="40" 
-                               Opacity="{Binding Status, Converter={StaticResource stToOpac}}" HorizontalAlignment="Right" PointerPressed="Progress_PointerPressed"/>
+                               Opacity="{Binding status, Converter={StaticResource stToOpac}}" HorizontalAlignment="Right" PointerPressed="Progress_PointerPressed"/>
 
                 <Viewbox Grid.Column="3" Height="40" Width="40" PointerPressed="Finish_PointerPressed" HorizontalAlignment="Right">
                     <SymbolIcon Symbol="Accept" Foreground="Green"/>
