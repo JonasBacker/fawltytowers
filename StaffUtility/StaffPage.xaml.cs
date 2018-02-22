@@ -119,5 +119,9 @@ namespace StaffUtility
 
         }
 
+        private void Note_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            selectedItem.Text = selectedIssue.note;
+        }
     }
 }

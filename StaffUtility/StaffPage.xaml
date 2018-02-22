@@ -17,13 +17,14 @@
         <!--Converter : velger rett ikonfil for serviceClass -->
         <local:ServiceClassToFilepathConverter x:Key="scToFp"/>
         <local:StatusToOpacityConverter x:Key="stToOpac"/>
+        <local:CommentedToOpacityConverter x:Key="comToOpac"/>
         <DataTemplate x:Key="defaultState" x:DataType="local:Issue">
             <Grid MinHeight="70">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="50" />
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{x:Bind room}" FontSize="30" Margin="0,0,20,0" VerticalAlignment="Center" HorizontalTextAlignment="Right" Grid.Column="0"/>
                 <TextBlock Text="{x:Bind issueDescription}" FontSize="18" Grid.Column="1" TextWrapping="WrapWholeWords" VerticalAlignment="Center" />
@@ -35,18 +36,24 @@
         <DataTemplate x:Key="selectedState" x:DataType="local:Issue">
             <Grid MinHeight="70">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="50" />
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
+                
                 <TextBlock Text="{x:Bind room}" FontSize="30" Margin="0,0,20,0" VerticalAlignment="Center" HorizontalTextAlignment="Right" Grid.Column="0"/>
                 <TextBlock Text="{x:Bind issueDescription}" FontSize="18" Grid.Column="1" TextWrapping="WrapWholeWords" VerticalAlignment="Center" />
 
-                <Image Source="{Binding issueType, Converter={StaticResource scToFp}}" Grid.Column="2" Height="40" Width="40" 
+                <Viewbox Grid.Column="2" Height="40" Width="40" PointerPressed="Note_PointerPressed" HorizontalAlignment="Right">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE70B;" VerticalAlignment="Bottom" Height="30" Width="30" Opacity="{Binding note, Converter={StaticResource comToOpac}}"/>
+                </Viewbox>
+
+                <Image Source="{Binding issueType, Converter={StaticResource scToFp}}" Grid.Column="3" Height="40" Width="40" 
                                Opacity="{Binding status, Converter={StaticResource stToOpac}}" HorizontalAlignment="Right" PointerPressed="Progress_PointerPressed"/>
 
-                <Viewbox Grid.Column="3" Height="40" Width="40" PointerPressed="Finish_PointerPressed" HorizontalAlignment="Right">
+                <Viewbox Grid.Column="4" Height="40" Width="40" PointerPressed="Finish_PointerPressed" HorizontalAlignment="Right">
                     <SymbolIcon Symbol="Accept" Foreground="Green"/>
                 </Viewbox>
 
@@ -56,7 +63,7 @@
     <Grid Name="g1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*" />
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
@@ -85,18 +92,6 @@
         <TextBlock Name="selectedItem" Text="valgt issue id" Grid.Row="0"/>
 
         <ListView Name="issue_list" ItemsSource="{x:Bind il}" Grid.Row="2" Grid.RowSpan="1" Background="#FFECEFFF" Margin="20,0,20,20" IsItemClickEnabled="True" IsMultiSelectCheckBoxEnabled="False" IsSwipeEnabled="False" SelectionMode="Single" SelectionChanged="issue_list_SelectionChanged">
-            <!--<ListView Name="issue_list" ItemsSource="{x:Bind il}" SelectionChanged="issue_list_SelectionChanged" Grid.Row="2" Grid.RowSpan="1" Background="#FFECEFFF" Margin="20,0,20,20" Width="auto" HorizontalAlignment="Center">-->
-
-            <!--<ListView.Header>
-                <Grid Margin="10,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="70"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="#" FontSize="20" Margin="0,0,20,0" HorizontalTextAlignment="Right" Grid.Column="0"/>
-                    <TextBlock Text="Description" FontSize="20" Grid.Column="1"/>
-                </Grid>
-            </ListView.Header>-->
 
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
@@ -105,11 +100,8 @@
             </ListView.ItemContainerStyle>
 
             <ListView.ItemTemplateSelector>
-                <local:MyDataTemplateSelector DefaultStateTemplate="{StaticResource defaultState}" SelectedStateItemTemplate="{StaticResource selectedState}">
-                </local:MyDataTemplateSelector>
-
+                <local:MyDataTemplateSelector DefaultStateTemplate="{StaticResource defaultState}" SelectedStateItemTemplate="{StaticResource selectedState}"/>
             </ListView.ItemTemplateSelector>
-
 
         </ListView>
     </Grid>
