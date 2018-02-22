@@ -105,4 +105,25 @@ namespace StaffUtility
         }
     }
 
+    public class CommentedToOpacityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            string noteString = (string)value;
+
+
+            double opac = 1.0;
+
+            if (noteString == "")
+                opac = 0.3;
+
+            return opac;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 }
