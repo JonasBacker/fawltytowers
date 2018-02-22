@@ -98,10 +98,11 @@ namespace StaffUtility
 
         private void issue_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            note.Visibility = Visibility.Collapsed;
+            save_note.Visibility = Visibility.Collapsed;
             if (e.AddedItems.Count != 0)
             {
                 selectedIssue = (Issue)e.AddedItems.First();
-                selectedItem.Text = selectedIssue.issueID.ToString();
             }
 
             foreach (var item in e.AddedItems)
@@ -121,7 +122,18 @@ namespace StaffUtility
 
         private void Note_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            selectedItem.Text = selectedIssue.note;
+            note.Visibility = Visibility.Visible;
+            note.Text = selectedIssue.note;
+            save_note.Visibility = Visibility.Visible;
+        }
+
+        private void save_note_Click(object sender, RoutedEventArgs e)
+        {
+            selectedIssue.note = note.Text;
+            ig.Update(selectedIssue);
+            issue_list.DataContext = il;
+            save_note.Visibility = Visibility.Collapsed;
+            note.Visibility = Visibility.Collapsed;
         }
     }
 }
