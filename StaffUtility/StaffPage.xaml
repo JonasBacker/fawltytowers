@@ -84,12 +84,33 @@
 
         <TextBlock Name="selectedItem" Text="valgt issue id" Grid.Row="0"/>
 
-        <ListView Name="issue_list" ItemsSource="{x:Bind il}" Grid.Row="2" Grid.RowSpan="1" Background="#FFECEFFF" Margin="20,0,20,20" IsItemClickEnabled="True" IsMultiSelectCheckBoxEnabled="False" IsSwipeEnabled="False" SelectionMode="Single" SelectionChanged="issue_list_SelectionChanged" ItemTemplate="{StaticResource defaultState}">
+        <ListView Name="issue_list" ItemsSource="{x:Bind il}" Grid.Row="2" Grid.RowSpan="1" Background="#FFECEFFF" Margin="20,0,20,20" IsItemClickEnabled="True" IsMultiSelectCheckBoxEnabled="False" IsSwipeEnabled="False" SelectionMode="Single" SelectionChanged="issue_list_SelectionChanged">
+            <!--<ListView Name="issue_list" ItemsSource="{x:Bind il}" SelectionChanged="issue_list_SelectionChanged" Grid.Row="2" Grid.RowSpan="1" Background="#FFECEFFF" Margin="20,0,20,20" Width="auto" HorizontalAlignment="Center">-->
+
+            <!--<ListView.Header>
+                <Grid Margin="10,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="#" FontSize="20" Margin="0,0,20,0" HorizontalTextAlignment="Right" Grid.Column="0"/>
+                    <TextBlock Text="Description" FontSize="20" Grid.Column="1"/>
+                </Grid>
+            </ListView.Header>-->
+
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                 </Style>
             </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplateSelector>
+                <local:MyDataTemplateSelector DefaultStateTemplate="{StaticResource defaultState}" SelectedStateItemTemplate="{StaticResource selectedState}">
+                </local:MyDataTemplateSelector>
+
+            </ListView.ItemTemplateSelector>
+
+
         </ListView>
     </Grid>
 </Page>
