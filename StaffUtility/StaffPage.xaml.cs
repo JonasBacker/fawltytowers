@@ -48,8 +48,7 @@ namespace StaffUtility
 
 
             il = ig.LoadUncompleted(serviceclass);
-
-
+            
             issue_list.DataContext = il;
             this.InitializeComponent();
 
