@@ -59,12 +59,6 @@ namespace StaffUtility
             this.Frame.Navigate(typeof(MainPage));
         }
 
-        //private void vacuumIcon_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    Image image = sender as Image;
-        //    if (image.Name.Equals("inProgress"))
-        //        image.Visibility = Visibility.Visible;
-        //}
 
         private void Finish_PointerPressed(object sender, RoutedEventArgs e)
         {
@@ -98,8 +92,7 @@ namespace StaffUtility
 
         private void issue_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            note.Visibility = Visibility.Collapsed;
-            save_note.Visibility = Visibility.Collapsed;
+
             if (e.AddedItems.Count != 0)
             {
                 selectedIssue = (Issue)e.AddedItems.First();
@@ -122,8 +115,6 @@ namespace StaffUtility
 
         private void Note_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            note.Visibility = Visibility.Visible;
-            note.Text = selectedIssue.note;
             save_note.Visibility = Visibility.Visible;
         }
 
@@ -132,8 +123,11 @@ namespace StaffUtility
             selectedIssue.note = note.Text;
             ig.Update(selectedIssue);
             issue_list.DataContext = il;
-            save_note.Visibility = Visibility.Collapsed;
-            note.Visibility = Visibility.Collapsed;
+        }
+
+        private void Flyout_Opened(object sender, object e)
+        {
+            note.Focus(FocusState.Programmatic);
         }
     }
 }
