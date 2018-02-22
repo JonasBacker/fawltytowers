@@ -21,7 +21,7 @@
         <DataTemplate x:Key="defaultState" x:DataType="local:Issue">
             <Grid MinHeight="70">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="70"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto"/>
@@ -36,7 +36,7 @@
         <DataTemplate x:Key="selectedState" x:DataType="local:Issue">
             <Grid MinHeight="70">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="70"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
