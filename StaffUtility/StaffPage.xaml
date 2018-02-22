@@ -6,9 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     
-    
-    mc:Ignorable="d">
 
+
+    mc:Ignorable="d">
     <Page.Resources>
         <!--Converter : inProgress = Visible, else Collapsed-->
         <local:StatusToVisibilityConverter x:Key="stToVis"/>
@@ -29,29 +29,10 @@
                 <TextBlock Text="{x:Bind room}" FontSize="30" Margin="0,0,20,0" VerticalAlignment="Center" HorizontalTextAlignment="Right" Grid.Column="0"/>
                 <TextBlock Text="{x:Bind issueDescription}" FontSize="18" Grid.Column="1" TextWrapping="WrapWholeWords" VerticalAlignment="Center" />
 
-                <Image Source="{Binding issueType, Converter={StaticResource scToFp}}" Grid.Column="2" Height="40" Width="40" Opacity="1" Margin="10,0,0,0" Visibility="{Binding status, Converter={StaticResource stToVis}}" HorizontalAlignment="Right"/>
+                <Image Source="{Binding issueType, Converter={StaticResource scToFp}}" Grid.Column="2" Height="40" Width="40" Opacity="1"
+                               Visibility="{Binding status, Converter={StaticResource stToVis}}" HorizontalAlignment="Right"/>
             </Grid>
         </DataTemplate>
-        
-        <Flyout x:Key="NoteFlyout" AllowFocusOnInteraction="True" LightDismissOverlayMode="On" Placement="Bottom">
-            <Flyout.FlyoutPresenterStyle>
-                <Style TargetType="FlyoutPresenter">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="MinWidth" Value="350"/>
-                    <Setter Property="MinHeight" Value="100"/>
-                </Style>
-            </Flyout.FlyoutPresenterStyle>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <TextBox Name="note" Text="{Binding note}" HorizontalContentAlignment="Stretch"  Grid.Column="0" TextWrapping="Wrap"/>
-
-                <Button Name="save_note" Content="Save Note" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="save_note_Click"/>
-            </Grid>
-        </Flyout>
-        
         <DataTemplate x:Key="selectedState" x:DataType="local:Issue">
             <Grid MinHeight="70">
                 <Grid.ColumnDefinitions>
@@ -65,52 +46,42 @@
                 <TextBlock Text="{x:Bind room}" FontSize="30" Margin="0,0,20,0" VerticalAlignment="Center" HorizontalTextAlignment="Right" Grid.Column="0"/>
                 <TextBlock Text="{x:Bind issueDescription}" FontSize="18" Grid.Column="1" TextWrapping="WrapWholeWords" VerticalAlignment="Center" />
 
+                <Viewbox Grid.Column="2" Height="40" Width="40" PointerPressed="Note_PointerPressed" HorizontalAlignment="Right">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE70B;" VerticalAlignment="Bottom" Height="30" Width="30" Opacity="{Binding note, Converter={StaticResource comToOpac}}"/>
+                </Viewbox>
 
-                <Button Grid.Column="2" Height="60" Width="60" HorizontalAlignment="Right" AllowFocusOnInteraction="True" Flyout="{StaticResource NoteFlyout}" Margin="0,0,0,0">
-                    <StackPanel>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE70B;" PointerPressed="Note_PointerPressed" VerticalAlignment="Bottom" Opacity="{Binding note, Converter={StaticResource comToOpac}}"/>
-                        <TextBlock Text="Notes" FontSize="8"/>
-                    </StackPanel>
-                </Button>
-                
-                <Button Grid.Column="3" Height="60" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" PointerPressed="Progress_PointerPressed">
-                    <StackPanel>
-                        <Image Source="{Binding issueType, Converter={StaticResource scToFp}}" Opacity="{Binding status, Converter={StaticResource stToOpac}}"/>
-                        <TextBlock Text="In progress" FontSize="7" VerticalAlignment="Bottom"/>
-                    </StackPanel>
-                </Button>
-                
-                <Button Grid.Column="4" Height="60" Width="60" PointerPressed="Finish_PointerPressed" HorizontalAlignment="Right" Margin="0,0,0,0">
-                    <StackPanel>
-                        <SymbolIcon Symbol="Accept" Foreground="Green"/>
-                        <TextBlock Text="Complete" FontSize="7" VerticalAlignment="Bottom"/>
-                    </StackPanel>
-                </Button>
+                <Image Source="{Binding issueType, Converter={StaticResource scToFp}}" Grid.Column="3" Height="40" Width="40" 
+                               Opacity="{Binding status, Converter={StaticResource stToOpac}}" HorizontalAlignment="Right" PointerPressed="Progress_PointerPressed"/>
+
+                <Viewbox Grid.Column="4" Height="40" Width="40" PointerPressed="Finish_PointerPressed" HorizontalAlignment="Right">
+                    <SymbolIcon Symbol="Accept" Foreground="Green"/>
+                </Viewbox>
 
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    <Grid Name="g1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Light" >
+    <Grid Name="g1" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*" />
+            <RowDefinition Height="160"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Grid.Row="0" Margin="20,10,20,10" HorizontalAlignment="Stretch">
+        <Grid Grid.Row="3" Margin="20,0,20,20">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="160"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Name="page_header" HorizontalAlignment="Center" Text="Page Headline not set" VerticalAlignment="Center" IsHitTestVisible="False" FontSize="36"/>
-            <Button Name="cleaning_go_home" HorizontalAlignment="Right" VerticalAlignment="Stretch" Click="service_go_home_Click" Grid.Column="1">
-                <StackPanel>
-                    <SymbolIcon Symbol="Home"/>
-                    <TextBlock Text="Home"></TextBlock>
-                </StackPanel>
+            <Button Name="cleaning_go_home" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="service_go_home_Click">
+                <SymbolIcon Symbol="Home"/>
             </Button>
-        </Grid> 
-
+            <TextBox Header="Note" Name="note" Grid.Column="1" HorizontalAlignment="Stretch" Visibility="Collapsed" TextWrapping="Wrap" Margin="10,0,10,0"/>
+            <Button Name="save_note" Content="Save Note" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="save_note_Click" Visibility="Collapsed"/>
+        </Grid>
+        
+        <TextBlock Name="page_header" HorizontalAlignment="Center" Text="Page Headline not set" Margin="20,20,0,0" Grid.ColumnSpan="3" IsHitTestVisible="False" FontSize="36"/>
         <Grid Margin="20,0,20,0"  Grid.Row="1" HorizontalAlignment="Stretch" Background="#FFECEFFF">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="82"/>
