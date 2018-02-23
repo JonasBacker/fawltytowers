@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Reflection;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -69,25 +70,40 @@ namespace StaffUtility
             issue_list.DataContext = il;
         }
 
-        private void Progress_PointerPressed(object sender, RoutedEventArgs e)
+        private void Progress_ButtonClicked(object sender, RoutedEventArgs e)
         {
-            Image img = (Image)sender;
-            if (selectedIssue.status == CompletionStatus.issued)
+            Button btn = (Button)sender;
+            Image img = new Image();
+
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(btn); i++)
             {
-                img.Opacity = 1;
-                selectedIssue.status = CompletionStatus.inProgress;
-                ig.Update(selectedIssue);
+                DependencyObject current = VisualTreeHelper.GetChild(btn, i);
+                if ((current.GetType()).Equals(typeof(Image)))
+                {
+                    img = (Image) current;
+                }
+
+                if (selectedIssue.status == CompletionStatus.issued)
+                {
+                    img.Opacity = 1;
+                    selectedIssue.status = CompletionStatus.inProgress;
+                    ig.Update(selectedIssue);
+                }
+                else
+                {
+                    img.Opacity = 0.3;
+                    selectedIssue.status = CompletionStatus.issued;
+                    ig.Update(selectedIssue);
+                }
+                //il = ig.LoadUncompleted(serviceclass);
+                issue_list.DataContext = il;
+
             }
-            else
-            {
-                img.Opacity = 0.3;
-                selectedIssue.status = CompletionStatus.issued;
-                ig.Update(selectedIssue);
-            }
-            //il = ig.LoadUncompleted(serviceclass);
-            issue_list.DataContext = il;
 
         }
+
+            
 
         private void issue_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
