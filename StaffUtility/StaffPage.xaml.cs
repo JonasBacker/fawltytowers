@@ -49,7 +49,7 @@ namespace StaffUtility
 
 
             il = ig.LoadUncompleted(serviceclass);
-            
+
             issue_list.DataContext = il;
             this.InitializeComponent();
 
@@ -60,50 +60,64 @@ namespace StaffUtility
         }
 
 
-        private void Finish_PointerPressed(object sender, RoutedEventArgs e)
+        private void Finish_Click(object sender, RoutedEventArgs e)
         {
             il.Remove(selectedIssue);
             selectedIssue.status = CompletionStatus.completed;
             selectedIssue.timeCompleted = DateTime.Now;
             ig.Update(selectedIssue);
-            //il = ig.LoadUncompleted(serviceclass);
             issue_list.DataContext = il;
         }
 
-        private void Progress_ButtonClicked(object sender, RoutedEventArgs e)
+        private void Progress_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = (Button)sender;
-            Image img = new Image();
+            DependencyObject btn = (DependencyObject)sender;
 
+            Image img = (Image)FindChild(btn, typeof(Image));
 
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(btn); i++)
+            if (selectedIssue.status == CompletionStatus.issued)
             {
-                DependencyObject current = VisualTreeHelper.GetChild(btn, i);
-                if ((current.GetType()).Equals(typeof(Image)))
-                {
-                    img = (Image) current;
-                }
-
-                if (selectedIssue.status == CompletionStatus.issued)
-                {
+                if (img != null)
                     img.Opacity = 1;
-                    selectedIssue.status = CompletionStatus.inProgress;
-                    ig.Update(selectedIssue);
-                }
-                else
-                {
-                    img.Opacity = 0.3;
-                    selectedIssue.status = CompletionStatus.issued;
-                    ig.Update(selectedIssue);
-                }
-                //il = ig.LoadUncompleted(serviceclass);
-                issue_list.DataContext = il;
-
+                selectedIssue.status = CompletionStatus.inProgress;
+                ig.Update(selectedIssue);
             }
+            else
+            {
+                if (img != null)
+                    img.Opacity = 0.3;
+                selectedIssue.status = CompletionStatus.issued;
+                ig.Update(selectedIssue);
+            }
+            issue_list.DataContext = il;
 
         }
 
-            
+        // Hjelpemetode for å finne child av et element i XAML etter type
+        public DependencyObject FindChild(DependencyObject parent, Type childType)
+        {
+
+            if (parent == null) return null;
+
+            DependencyObject foundChild = null;
+
+            int childrenCount = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < childrenCount; i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
+                if (child.GetType().Equals(childType))
+                {
+                    foundChild = child;
+                    break;
+                } else {
+                    foundChild = FindChild(child, childType);
+                    if (foundChild != null) break;
+                }
+
+            }
+            return foundChild;
+
+        }
 
         private void issue_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -126,11 +140,6 @@ namespace StaffUtility
             }
 
 
-        }
-
-        private void Note_PointerPressed(object sender, PointerRoutedEventArgs e)
-        {
-            save_note.Visibility = Visibility.Visible;
         }
 
         private void save_note_Click(object sender, RoutedEventArgs e)

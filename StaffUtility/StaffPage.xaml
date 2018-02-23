@@ -68,19 +68,19 @@
 
                 <Button Grid.Column="2" Height="60" Width="60" HorizontalAlignment="Right" AllowFocusOnInteraction="True" Flyout="{StaticResource NoteFlyout}" Margin="0,0,0,0">
                     <StackPanel>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE70B;" PointerPressed="Note_PointerPressed" VerticalAlignment="Bottom" Opacity="{Binding note, Converter={StaticResource comToOpac}}"/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE70B;" VerticalAlignment="Bottom" Opacity="{Binding note, Converter={StaticResource comToOpac}}"/>
                         <TextBlock Text="Notes" FontSize="8"/>
                     </StackPanel>
                 </Button>
                 
-                <Button Grid.Column="3" Height="60" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" Click="Progress_ButtonClicked">
+                <Button Grid.Column="3" Height="60" Width="60" Margin="0,0,0,0" HorizontalAlignment="Right" Click="Progress_Click">
                     <StackPanel>
                         <Image Name="progress_image" Source="{Binding issueType, Converter={StaticResource scToFp}}" Opacity="{Binding status, Converter={StaticResource stToOpac}}" Height="30" Width="30"/>
                         <TextBlock Text="In progress" FontSize="7" VerticalAlignment="Bottom"/>
                     </StackPanel>
                 </Button>
                 
-                <Button Grid.Column="4" Height="60" Width="60" Click="Finish_PointerPressed" HorizontalAlignment="Right" Margin="0,0,0,0">
+                <Button Grid.Column="4" Height="60" Width="60" Click="Finish_Click" HorizontalAlignment="Right" Margin="0,0,0,0">
                     <StackPanel>
                         <SymbolIcon Symbol="Accept" Foreground="Green"/>
                         <TextBlock Text="Complete" FontSize="7" VerticalAlignment="Bottom"/>
